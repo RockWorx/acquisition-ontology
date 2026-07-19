@@ -17,10 +17,37 @@
     "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess"
   } ]
 }, {
+  "@id" : "http://purl.obolibrary.org/obo/BFO_0000015",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/BFO_0000016",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/BFO_0000035",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
   "@id" : "http://purl.obolibrary.org/obo/BFO_0000057",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0000115",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/IAO_0100001",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
   "@id" : "http://purl.org/dc/terms/creator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/date",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/description",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/license",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/title",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
   "@id" : "http://www.w3.org/2004/02/skos/core#definition",
@@ -29,46 +56,404 @@
   "@id" : "http://www.w3.org/ns/prov#wasDerivedFrom",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
-  "@id" : "https://w3id.org/rockworx/acq#FundingSource",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
-}, {
-  "@id" : "https://w3id.org/rockworx/acq#ProgramOversightOrganization",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
-}, {
-  "@id" : "https://w3id.org/rockworx/acq#RequirementDeterminationProcess",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
-}, {
-  "@id" : "https://w3id.org/rockworx/acq#isRequirementsInputTo",
-  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
-}, {
-  "@id" : "https://w3id.org/rockworx/acq/transform",
+  "@id" : "https://w3id.org/rockworx/acq",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
   "http://purl.org/dc/terms/creator" : [ {
     "@value" : "RockWorx Aerospace"
   } ],
+  "http://purl.org/dc/terms/description" : [ {
+    "@value" : "A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle (DoDI 5000.85) and its 2025 WAS/JFRP reform, with a working SysML v2 integration."
+  } ],
   "http://purl.org/dc/terms/license" : [ {
     "@id" : "https://opensource.org/licenses/BSD-3-Clause"
   } ],
-  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
-    "@value" : "RockWorx Acquisition Transformation Overlay"
-  } ],
-  "http://www.w3.org/2002/07/owl#imports" : [ {
-    "@id" : "http://purl.obolibrary.org/obo/iao.owl"
-  }, {
-    "@id" : "https://w3id.org/rockworx/acq"
-  } ],
-  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
-    "@id" : "https://w3id.org/rockworx/acq/transform/2026-07-18"
+  "http://purl.org/dc/terms/title" : [ {
+    "@value" : "RockWorx Acquisition Ontology + SysML v2 Link"
   } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
-    "@value" : "2026-07-18"
+    "@value" : "2026-07-19"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#AcquisitionGate",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Acquisition Gate"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000228"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#TechnicalReview"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
-    "@value" : "The transformation overlay ontology: reformed and legacy fillers of the base RWXA acquisition-lifecycle roles, linked by deprecation and provenance to the Defense Acquisition System reform of 2025."
+    "@value" : "A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#AcquisitionMilestone",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Acquisition Milestone"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000035"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#AcquisitionPhase",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&D, O&S); it occupies a one-dimensional temporal region."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Acquisition Phase"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&D, O&S); it occupies a one-dimensional temporal region."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#AuthorityReference",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A document content entity that establishes statutory or policy authority (e.g. a Title 10 U.S.C. section, a DoD instruction) to which a capability requirement or key performance parameter traces."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Authority Reference"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00002039"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A document content entity that establishes statutory or policy authority (e.g. a Title 10 U.S.C. section, a DoD instruction) to which a capability requirement or key performance parameter traces."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#FundingSource",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Funding Source"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000958"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#KeyPerformanceParameter",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A performance specification stating a minimum acceptable value of a system attribute that must be met to deliver the required operational capability (a KPP); a subtype of Performance Specification that persists across the JCIDS-to-JFRP reform (KPP/KSA/APA)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Key Performance Parameter"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000127"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A performance specification stating a minimum acceptable value of a system attribute that must be met to deliver the required operational capability (a KPP); a subtype of Performance Specification that persists across the JCIDS-to-JFRP reform (KPP/KSA/APA)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#ProgramOversightOrganization",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Program Oversight Organization"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00001180"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#ProgramRisk",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A disposition of a program to realize an undesired outcome; it is realized in an undesired programmatic process."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Program Risk"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000016"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A disposition of a program to realize an undesired outcome; it is realized in an undesired programmatic process."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#RequirementDeterminationProcess",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Requirement Determination Process"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000228"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#RiskAssessment",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A descriptive information content entity that describes a program risk and bears likelihood and consequence qualities."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Risk Assessment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000853"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A descriptive information content entity that describes a program risk and bears likelihood and consequence qualities."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#TechnicalReview",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Technical Review"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000228"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#UndesiredProgrammaticProcess",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A programmatic process constituting an undesired outcome that a program risk is realized in."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Undesired Programmatic Process"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A programmatic process constituting an undesired outcome that a program risk is realized in."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#demands",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an acquisition gate or technical review to a competency it demands be demonstrated for passage."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "demands"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an acquisition gate or technical review to a competency it demands be demonstrated for passage."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#demonstrates",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an information artifact to a competency whose maturity it demonstrates (evidentially, carrying a date)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "demonstrates"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an information artifact to a competency whose maturity it demonstrates (evidentially, carrying a date)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#gates",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an acquisition gate to the phase transition whose authorization it controls."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "gates"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an acquisition gate to the phase transition whose authorization it controls."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#governs",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a program-oversight organization to a program element under its acquisition oversight."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "governs"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a program-oversight organization to a program element under its acquisition oversight."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#informs",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a technical review to the acquisition gate decision it informs (a review informs, but does not constitute, a gate)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#TechnicalReview"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "informs"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#AcquisitionGate"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a technical review to the acquisition gate decision it informs (a review informs, but does not constitute, a gate)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#isRequirementsInputTo",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an information artifact (a capability requirement document or an operational problem statement) to the requirement-determination process it feeds."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000958"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "is requirements input to"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#RequirementDeterminationProcess"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an information artifact (a capability requirement document or an operational problem statement) to the requirement-determination process it feeds."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#owns",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an agent or role to the acquisition act (gate or review) for which it holds decision ownership."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "owns"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an agent or role to the acquisition act (gate or review) for which it holds decision ownership."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#performs",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an agent to an acquisition activity it performs."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "performs"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an agent to an acquisition activity it performs."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#precedes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an acquisition phase to the phase that immediately follows it in the lifecycle."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "precedes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an acquisition phase to the phase that immediately follows it in the lifecycle."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#producesArtifact",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an acquisition activity to an information artifact it produces."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "produces artifact"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an acquisition activity to an information artifact it produces."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#requiresArtifact",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates an acquisition gate or technical review to an information artifact it requires as entry or exit criteria."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "requires artifact"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates an acquisition gate or technical review to an information artifact it requires as entry or exit criteria."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#supersedes",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a construct to a prior construct it supersedes (e.g. a reformed process superseding a legacy one)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "supersedes"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a construct to a prior construct it supersedes (e.g. a reformed process superseding a legacy one)."
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform"
   } ],
@@ -90,6 +475,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#ConfigurationSteeringBoard",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An organization that is the legacy board responsible for requirement-versus-cost trades on a single program, replaced by capability trade councils operating at the portfolio level."
+  } ],
   "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil"
   } ],
@@ -119,7 +507,7 @@
     "@id" : "https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
-    "@value" : "Temporally bounded 2025-present; directed by Executive Order 14265 (November 2025)."
+    "@value" : "Temporally bounded 2025-present; directed by Executive Order 14265, 'Modernizing Defense Acquisitions and Spurring Innovation in the Defense Industrial Base' (9 April 2025) -- the directing instrument, implemented later in 2025 by the Secretary of War memorandum transforming the DAS into the WAS."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Defense Acquisition System Reform of 2025"
@@ -133,15 +521,30 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A planned process type whose instances are domain-level Defense Acquisition System reforms (e.g. DASReform2025), each directed by an authorizing instrument and reorganizing program-oversight authority across the acquisition enterprise."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "Defense Acquisition System Reform"
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://www.commoncoreontologies.org/ont00000228"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A planned process type whose instances are domain-level Defense Acquisition System reforms (e.g. DASReform2025), each directed by an authorizing instrument and reorganizing program-oversight authority across the acquisition enterprise."
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265",
   "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Executive Order 14265, 'Modernizing Defense Acquisitions and Spurring Innovation in the Defense Industrial Base' (9 April 2025) -- the executive order directing a comprehensive reform of the Department of Defense's acquisition processes for speed, flexibility, and execution; the directing instrument for the 2025 Defense Acquisition System reform. Source: Daily Compilation of Presidential Documents, DCPD-202500458."
+  } ],
+  "http://purl.org/dc/terms/date" : [ {
+    "@value" : "2025-04-09"
+  } ],
+  "http://purl.org/dc/terms/title" : [ {
+    "@value" : "Modernizing Defense Acquisitions and Spurring Innovation in the Defense Industrial Base"
+  } ],
   "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
     "@id" : "https://www.commoncoreontologies.org/ont00002039"
   } ],
@@ -151,6 +554,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#InitialCapabilitiesDocument",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A prescriptive information content entity that is the legacy JCIDS document prescribing a capability requirement, identifying a capability gap and a preferred materiel approach."
+  } ],
   "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform#KeyOperationalProblem"
   } ],
@@ -175,6 +581,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#JCIDS",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A planned process that is the disestablished pre-2025 joint requirements process by which capability requirements were determined via prescriptive capability documents."
+  } ],
   "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess"
   } ],
@@ -197,6 +606,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#JointAccelerationReserve",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform"
   } ],
@@ -218,6 +630,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform"
   } ],
@@ -239,6 +654,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#KeyOperationalProblem",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform"
   } ],
@@ -262,6 +680,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@value" : "This class represents the organizational office, not the role borne by a person."
   } ],
@@ -286,6 +707,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioScorecard",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform"
   } ],
@@ -307,6 +731,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An organization that is the legacy program-executive office, reorganized under the Defense Acquisition System reform into Portfolio Acquisition Executive portfolios."
+  } ],
   "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
     "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive"
   } ],
@@ -332,6 +759,9 @@
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#authorityTier",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The level of authority -- STATUTE > POLICY > GUIDANCE -- from which an acquisition construct is derived."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@value" : "authority tier"
   } ],
@@ -357,10 +787,19 @@
     "@value" : "The reorganized Program Executive Offices"
   } ]
 }, {
+  "@id" : "https://www.commoncoreontologies.org/ont00000127",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
   "@id" : "https://www.commoncoreontologies.org/ont00000228",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "https://www.commoncoreontologies.org/ont00000476",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00000853",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00000958",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
   "@id" : "https://www.commoncoreontologies.org/ont00000965",

@@ -2,7 +2,8 @@
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix : <> .
-<https://w3id.org/rockworx/acq/transform/2026-07-18> a prov:Entity;
+<..\index-en.html> a prov:Entity;
+	 dc:title "RockWorx Acquisition Ontology + SysML v2 Link";
 	 prov:wasAttributedTo :agent0;
 	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
 .
