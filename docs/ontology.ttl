@@ -7,11 +7,13 @@
 @base <https://w3id.org/rockworx/acq#> .
 
 <https://w3id.org/rockworx/acq> rdf:type owl:Ontology ;
+                                 owl:versionIRI <https://w3id.org/rockworx/acq/2026-07-18> ;
                                  <http://purl.org/dc/terms/creator> "RockWorx Aerospace" ;
-                                 <http://purl.org/dc/terms/description> "A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle (DoDI 5000.85) and its 2025 WAS/JFRP reform, with a working SysML v2 integration." ;
+                                 <http://purl.org/dc/terms/description> "A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle in four modules: the base (DoDI 5000.85 Major Capability Acquisition -- what IS law/policy), the transformation overlay (the 2025 Warfighting Acquisition System / Joint Force Requirements Process reform), the legislative-horizon layer (what MIGHT become law -- pending bills as non-asserted candidate changes), and the SysML v2 link bridge. Creator: RockWorx Aerospace. License: BSD-3-Clause." ;
                                  <http://purl.org/dc/terms/license> <https://opensource.org/licenses/BSD-3-Clause> ;
-                                 <http://purl.org/dc/terms/title> "RockWorx Acquisition Ontology + SysML v2 Link" ;
-                                 owl:versionInfo "2026-07-19" .
+                                 <http://purl.org/dc/terms/title> "RockWorx Acquisition Ontology" ;
+                                 rdfs:label "RockWorx Acquisition Ontology" ;
+                                 owl:versionInfo "2026-07-18" .
 
 #################################################################
 #    Annotation properties
@@ -53,8 +55,53 @@
 <http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
 
 
-###  http://www.w3.org/ns/prov#wasDerivedFrom
-<http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:AnnotationProperty .
+###  https://w3id.org/rockworx/acq/horizon#changeType
+<https://w3id.org/rockworx/acq/horizon#changeType> rdf:type owl:AnnotationProperty ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000115> "What the proposal would do to the referenced construct if enacted: ADD | MODIFY | SUPERSEDE." ;
+                                                   rdfs:label "change type" ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "What the proposal would do to the referenced construct if enacted: ADD | MODIFY | SUPERSEDE." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#enactmentLikelihood
+<https://w3id.org/rockworx/acq/horizon#enactmentLikelihood> rdf:type owl:AnnotationProperty ;
+                                                            <http://purl.obolibrary.org/obo/IAO_0000115> "An explicit, sourced JUDGMENT of the likelihood the proposal is enacted: LOW | MEDIUM | HIGH. This is a judgment, NEVER a fact; it is an annotation and is invisible to the reasoner. It must always be paired with a likelihoodBasis." ;
+                                                            rdfs:label "enactment likelihood" ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "An explicit, sourced judgment (LOW | MEDIUM | HIGH) of the likelihood of enactment; a judgment, never a fact." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#graduatedTo
+<https://w3id.org/rockworx/acq/horizon#graduatedTo> rdf:type owl:AnnotationProperty ;
+                                                    <http://purl.obolibrary.org/obo/IAO_0000115> "On enactment, points a (now owl:deprecated) legislative candidate change to the base/transform construct that received the enacted change through the governed, append-only graduation migration." ;
+                                                    rdfs:label "graduated to" ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Points an enacted, graduated candidate change to the base/transform construct that received the change." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#impactAssessment
+<https://w3id.org/rockworx/acq/horizon#impactAssessment> rdf:type owl:AnnotationProperty ;
+                                                         <http://purl.obolibrary.org/obo/IAO_0000115> "The analytic narrative of the downstream effect the proposal would have on the acquisition process if enacted -- the product of the horizon layer." ;
+                                                         rdfs:label "impact assessment" ;
+                                                         <http://www.w3.org/2004/02/skos/core#definition> "The analytic narrative of the downstream effect the proposal would have if enacted." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#legislativeMaturity
+<https://w3id.org/rockworx/acq/horizon#legislativeMaturity> rdf:type owl:AnnotationProperty ;
+                                                            <http://purl.obolibrary.org/obo/IAO_0000115> "The rung a legislative candidate change occupies on the legislative-maturity ladder, taken from the Congress.gov API's real status: one of proposed | introduced | reported | passed-one-chamber | in-conference | enacted. On 'enacted' the candidate graduates out of the horizon into transform/base with statutory provenance." ;
+                                                            rdfs:label "legislative maturity" ;
+                                                            <http://www.w3.org/2004/02/skos/core#definition> "The legislative-maturity rung (proposed | introduced | reported | passed-one-chamber | in-conference | enacted), taken from the source's real status." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#likelihoodBasis
+<https://w3id.org/rockworx/acq/horizon#likelihoodBasis> rdf:type owl:AnnotationProperty ;
+                                                        <http://purl.obolibrary.org/obo/IAO_0000115> "The sourced rationale for an enactmentLikelihood judgment; a likelihood is never a bare value." ;
+                                                        rdfs:label "likelihood basis" ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "The sourced rationale for an enactmentLikelihood judgment." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#prospectiveAuthorityTier
+<https://w3id.org/rockworx/acq/horizon#prospectiveAuthorityTier> rdf:type owl:AnnotationProperty ;
+                                                                 <http://purl.obolibrary.org/obo/IAO_0000115> "The authority tier a legislative candidate change WOULD establish if enacted -- e.g. STATUTE-PENDING (a pending statute). This is a horizon-layer annotation about a proposal; it is distinct from the transform layer's rwxt:authorityTier, which records the ASSERTED authority basis of an in-effect construct. Keeping them separate preserves the prospective-vs-asserted boundary. On enactment the construct gains rwxt:authorityTier via the graduation migration, not this property." ;
+                                                                 rdfs:label "prospective authority tier" ;
+                                                                 <http://www.w3.org/2004/02/skos/core#definition> "The authority tier a legislative candidate change would establish if enacted (e.g. STATUTE-PENDING); distinct from the transform layer's asserted authorityTier." .
 
 
 ###  https://w3id.org/rockworx/acq/transform#authorityTier
@@ -75,6 +122,14 @@
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+<http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:ObjectProperty ;
+                                           <http://purl.obolibrary.org/obo/IAO_0000115> "PROV-O: relates a legislative candidate change to the legislative instrument (bill, report, or public law) whose text it was extracted from." ,
+                                                                                        "PROV-O: the subject entity was derived from the object entity. Reused here (NOT minted) so that a requirement or KPP traces to the statutory or policy authority that establishes it; declared locally only so the tag-library generator emits its connection def." ;
+                                           rdfs:comment "Reused from PROV-O for requirement-to-authority tracing; not a RockWorx-minted property." ;
+                                           rdfs:label "was derived from" .
+
 
 ###  https://w3id.org/rockworx/acq#demands
 :demands rdf:type owl:ObjectProperty ;
@@ -164,6 +219,103 @@
             <http://www.w3.org/2004/02/skos/core#definition> "Relates a construct to a prior construct it supersedes (e.g. a reformed process superseding a legacy one)." .
 
 
+###  https://w3id.org/rockworx/acq/horizon#wouldAffect
+<https://w3id.org/rockworx/acq/horizon#wouldAffect> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
+                                                    <http://purl.obolibrary.org/obo/IAO_0000115> "Relates a legislative candidate change to the existing base or transform construct it would ADD to, MODIFY, or SUPERSEDE if the proposal were enacted. This is an INTENSIONAL reference for analysis only: it asserts NO change to the referenced construct. It is deliberately NOT a subproperty of any base relation and carries no range axiom, so a reasoner infers nothing about the referenced construct. The target construct is referenced by its class IRI via OWL 2 punning (a class name used as an individual)." ;
+                                                    rdfs:label "would affect" ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Relates a legislative candidate change to the base/transform construct it would add to, modify, or supersede if enacted; an intensional reference that asserts no change to the target." .
+
+
+###  https://w3id.org/rockworx/acq/sysml#assessedAt
+<https://w3id.org/rockworx/acq/sysml#assessedAt> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain <https://www.commoncoreontologies.org/ont00000958> ;
+                                                 rdfs:range :TechnicalReview ;
+                                                 <http://purl.obolibrary.org/obo/IAO_0000115> "Relates a requirement or key performance parameter to the technical review at which its satisfaction is assessed." ;
+                                                 rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                 rdfs:label "assessed at" ;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "Relates a requirement or key performance parameter to the technical review at which its satisfaction is assessed." .
+
+
+###  https://w3id.org/rockworx/acq/sysml#assessesRisk
+<https://w3id.org/rockworx/acq/sysml#assessesRisk> rdf:type owl:ObjectProperty ;
+                                                   rdfs:domain :RiskAssessment ;
+                                                   rdfs:range :ProgramRisk ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000115> "Relates a risk assessment (a descriptive information content entity) to the program risk (a disposition) it describes." ;
+                                                   rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                   rdfs:label "assesses risk" .
+
+
+###  https://w3id.org/rockworx/acq/sysml#indicatesRisk
+<https://w3id.org/rockworx/acq/sysml#indicatesRisk> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                                    rdfs:range :ProgramRisk ;
+                                                    <http://purl.obolibrary.org/obo/IAO_0000115> "Relates a process, such as a failed verification, to the program risk (a disposition) whose presence it indicates. Deliberately NOT BFO 'realizes' (obo:BFO_0000055): a failed test EVIDENCES the risk disposition; it does not realize it -- the risk is realized by the later undesired programmatic process." ;
+                                                    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                    rdfs:label "indicates risk" ;
+                                                    <http://www.w3.org/2004/02/skos/core#definition> "Relates a process, such as a failed verification, to the program risk whose presence it indicates (evidential, not BFO realization)." .
+
+
+###  https://w3id.org/rockworx/acq/sysml#satisfies
+<https://w3id.org/rockworx/acq/sysml#satisfies> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                rdfs:range <https://www.commoncoreontologies.org/ont00000958> ;
+                                                <http://purl.obolibrary.org/obo/IAO_0000115> "Relates a design element (a material entity) to the requirement or key performance parameter that it satisfies." ;
+                                                rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                rdfs:label "satisfies" ;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "Relates a design element (a material entity) to the requirement or key performance parameter that it satisfies." .
+
+
+###  https://w3id.org/rockworx/acq/sysml#verifies
+<https://w3id.org/rockworx/acq/sysml#verifies> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                               rdfs:range <https://www.commoncoreontologies.org/ont00000958> ;
+                                               <http://purl.obolibrary.org/obo/IAO_0000115> "Relates a verification activity (a process) to the requirement or key performance parameter whose satisfaction it establishes by evidence." ;
+                                               rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                               rdfs:label "verifies" ;
+                                               <http://www.w3.org/2004/02/skos/core#definition> "Relates a verification activity (a process) to the requirement or key performance parameter whose satisfaction it establishes by evidence." .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/rockworx/acq/sysml#riskDisposition
+<https://w3id.org/rockworx/acq/sysml#riskDisposition> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                                      rdfs:range xsd:string ;
+                                                      <http://purl.obolibrary.org/obo/IAO_0000115> "The program's handling decision for the risk arising from a verification's outcome: Open (unmitigated -- blocks a milestone gate) or Accepted (formally accepted -- does not block, and the failed result is retained)." ;
+                                                      rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                      rdfs:label "risk disposition" .
+
+
+###  https://w3id.org/rockworx/acq/sysml#riskSeverity
+<https://w3id.org/rockworx/acq/sysml#riskSeverity> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain :RiskAssessment ;
+                                                   rdfs:range xsd:string ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000115> "The assessed severity a risk assessment records for the program risk it describes (LOW, MEDIUM, or HIGH)." ;
+                                                   rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                   rdfs:label "risk severity" .
+
+
+###  https://w3id.org/rockworx/acq/sysml#riskStatus
+<https://w3id.org/rockworx/acq/sysml#riskStatus> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain :RiskAssessment ;
+                                                 rdfs:range xsd:string ;
+                                                 <http://purl.obolibrary.org/obo/IAO_0000115> "The management status a risk assessment records (Open, Closed, or Accepted); only an Open assessment of a risk blocks a milestone gate." ;
+                                                 rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                 rdfs:label "risk status" .
+
+
+###  https://w3id.org/rockworx/acq/sysml#verificationResult
+<https://w3id.org/rockworx/acq/sysml#verificationResult> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                                         rdfs:range xsd:string ;
+                                                         <http://purl.obolibrary.org/obo/IAO_0000115> "The recorded outcome of a verification (e.g. PASS or FAIL); a FAIL is the explicit datum from which a program risk is derived." ;
+                                                         rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+                                                         rdfs:label "verification result" .
+
+
 #################################################################
 #    Classes
 #################################################################
@@ -180,10 +332,15 @@
 <http://purl.obolibrary.org/obo/BFO_0000035> rdf:type owl:Class .
 
 
+###  http://purl.obolibrary.org/obo/BFO_0000040
+<http://purl.obolibrary.org/obo/BFO_0000040> rdf:type owl:Class .
+
+
 ###  https://w3id.org/rockworx/acq#AcquisitionGate
 :AcquisitionGate rdf:type owl:Class ;
                  rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
-                 owl:disjointWith :TechnicalReview ;
+                 owl:disjointWith :TechnicalReview ,
+                                  <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                  <http://purl.obolibrary.org/obo/IAO_0000115> "A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum)." ;
                  rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                  rdfs:label "Acquisition Gate" ;
@@ -193,6 +350,7 @@
 ###  https://w3id.org/rockworx/acq#AcquisitionMilestone
 :AcquisitionMilestone rdf:type owl:Class ;
                       rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000035> ;
+                      owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                       <http://purl.obolibrary.org/obo/IAO_0000115> "A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C)." ;
                       rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                       rdfs:label "Acquisition Milestone" ;
@@ -202,6 +360,7 @@
 ###  https://w3id.org/rockworx/acq#AcquisitionPhase
 :AcquisitionPhase rdf:type owl:Class ;
                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                  owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                   <http://purl.obolibrary.org/obo/IAO_0000115> "A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&D, O&S); it occupies a one-dimensional temporal region." ;
                   rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                   rdfs:label "Acquisition Phase" ;
@@ -220,6 +379,7 @@
 ###  https://w3id.org/rockworx/acq#FundingSource
 :FundingSource rdf:type owl:Class ;
                rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000958> ;
+               owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                <http://purl.obolibrary.org/obo/IAO_0000115> "An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element." ;
                rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                rdfs:label "Funding Source" ;
@@ -238,6 +398,7 @@
 ###  https://w3id.org/rockworx/acq#ProgramOversightOrganization
 :ProgramOversightOrganization rdf:type owl:Class ;
                               rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> ;
+                              owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                               <http://purl.obolibrary.org/obo/IAO_0000115> "An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office)." ;
                               rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                               rdfs:label "Program Oversight Organization" ;
@@ -256,6 +417,7 @@
 ###  https://w3id.org/rockworx/acq#RequirementDeterminationProcess
 :RequirementDeterminationProcess rdf:type owl:Class ;
                                  rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
+                                 owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                                  <http://purl.obolibrary.org/obo/IAO_0000115> "A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process)." ;
                                  rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                                  rdfs:label "Requirement Determination Process" ;
@@ -274,6 +436,7 @@
 ###  https://w3id.org/rockworx/acq#TechnicalReview
 :TechnicalReview rdf:type owl:Class ;
                  rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
+                 owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> ;
                  <http://purl.obolibrary.org/obo/IAO_0000115> "A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate." ;
                  rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
                  rdfs:label "Technical Review" ;
@@ -289,15 +452,28 @@
                               <http://www.w3.org/2004/02/skos/core#definition> "A programmatic process constituting an undesired outcome that a program risk is realized in." .
 
 
+###  https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange
+<https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000853> ;
+                                                                   owl:disjointWith <https://w3id.org/rockworx/acq/horizon#LegislativeInstrument> ;
+                                                                   <http://purl.obolibrary.org/obo/IAO_0000115> "A descriptive information content entity that DESCRIBES a proposed, not-yet-in-effect change to the defense acquisition system, extracted from a specific legislative instrument. EPISTEMIC DISCIPLINE: asserting an instance of this class asserts ONLY that the proposal exists and what it describes -- it does NOT assert that the described change is in effect. Prospective is not asserted." ;
+                                                                   rdfs:isDefinedBy <https://w3id.org/rockworx/acq/horizon> ;
+                                                                   rdfs:label "Legislative Candidate Change" ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "A descriptive information content entity describing a proposed, not-yet-in-effect change to the defense acquisition system, extracted from a specific legislative instrument; prospective, never asserted as in effect." .
+
+
+###  https://w3id.org/rockworx/acq/horizon#LegislativeInstrument
+<https://w3id.org/rockworx/acq/horizon#LegislativeInstrument> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <https://www.commoncoreontologies.org/ont00002039> ;
+                                                              <http://purl.obolibrary.org/obo/IAO_0000115> "A document content entity that is a bill, amendment, committee report, or enacted public law before or passed by the United States Congress (e.g. H.R. 3838, S. 4784, Public Law 119-60). Its existence is a matter of public record; asserting it asserts only that the document exists." ;
+                                                              rdfs:isDefinedBy <https://w3id.org/rockworx/acq/horizon> ;
+                                                              rdfs:label "Legislative Instrument" ;
+                                                              <http://www.w3.org/2004/02/skos/core#definition> "A document content entity that is a bill, amendment, committee report, or enacted public law before or passed by the United States Congress." .
+
+
 ###  https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil
 <https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> ;
-                                                                 <http://purl.obolibrary.org/obo/IAO_0000115> "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio." ;
-                                                                 rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
-                                                                 rdfs:label "Capability Trade Council" ;
-                                                                 <http://www.w3.org/2004/02/skos/core#definition> "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio." ;
-                                                                 <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> ;
-                                                                 <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+                                                                 rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001180> .
 
 
 ###  https://w3id.org/rockworx/acq/transform#ConfigurationSteeringBoard
@@ -347,24 +523,12 @@
 
 ###  https://w3id.org/rockworx/acq/transform#JointAccelerationReserve
 <https://w3id.org/rockworx/acq/transform#JointAccelerationReserve> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf :FundingSource ;
-                                                                   <http://purl.obolibrary.org/obo/IAO_0000115> "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding." ;
-                                                                   rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
-                                                                   rdfs:label "Joint Acceleration Reserve" ;
-                                                                   <http://www.w3.org/2004/02/skos/core#definition> "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding." ;
-                                                                   <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> ;
-                                                                   <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+                                                                   rdfs:subClassOf :FundingSource .
 
 
 ###  https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess
 <https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf :RequirementDeterminationProcess ;
-                                                                        <http://purl.obolibrary.org/obo/IAO_0000115> "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents." ;
-                                                                        rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
-                                                                        rdfs:label "Joint Force Requirements Process" ;
-                                                                        <http://www.w3.org/2004/02/skos/core#definition> "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents." ;
-                                                                        <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> ;
-                                                                        <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+                                                                        rdfs:subClassOf :RequirementDeterminationProcess .
 
 
 ###  https://w3id.org/rockworx/acq/transform#KeyOperationalProblem
@@ -373,36 +537,17 @@
                                                                                 [ rdf:type owl:Restriction ;
                                                                                   owl:onProperty :isRequirementsInputTo ;
                                                                                   owl:someValuesFrom <https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess>
-                                                                                ] ;
-                                                                <http://purl.obolibrary.org/obo/IAO_0000115> "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents." ;
-                                                                rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
-                                                                rdfs:label "Key Operational Problem" ;
-                                                                <http://www.w3.org/2004/02/skos/core#definition> "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents." ;
-                                                                <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> ;
-                                                                <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+                                                                                ] .
 
 
 ###  https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive
 <https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf :ProgramOversightOrganization ;
-                                                                        <http://purl.obolibrary.org/obo/IAO_0000115> "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office." ;
-                                                                        rdfs:comment "This class represents the organizational office, not the role borne by a person." ;
-                                                                        rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
-                                                                        rdfs:label "Portfolio Acquisition Executive" ;
-                                                                        <http://www.w3.org/2004/02/skos/core#definition> "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office." ;
-                                                                        <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> ;
-                                                                        <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+                                                                        rdfs:subClassOf :ProgramOversightOrganization .
 
 
 ###  https://w3id.org/rockworx/acq/transform#PortfolioScorecard
 <https://w3id.org/rockworx/acq/transform#PortfolioScorecard> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <https://www.commoncoreontologies.org/ont00002039> ;
-                                                             <http://purl.obolibrary.org/obo/IAO_0000115> "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field." ;
-                                                             rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
-                                                             rdfs:label "Portfolio Scorecard" ;
-                                                             <http://www.w3.org/2004/02/skos/core#definition> "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field." ;
-                                                             <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> ;
-                                                             <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+                                                             rdfs:subClassOf <https://www.commoncoreontologies.org/ont00002039> .
 
 
 ###  https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice
@@ -453,6 +598,11 @@
 #    Individuals
 #################################################################
 
+###  https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil
+<https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil> rdf:type owl:NamedIndividual ;
+                                                                 <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> .
+
+
 ###  https://w3id.org/rockworx/acq/transform#DASReform2025
 <https://w3id.org/rockworx/acq/transform#DASReform2025> rdf:type owl:NamedIndividual ,
                                                                  <https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform> ;
@@ -472,6 +622,31 @@
                                                               rdfs:label "Executive Order 14265" .
 
 
+###  https://w3id.org/rockworx/acq/transform#JointAccelerationReserve
+<https://w3id.org/rockworx/acq/transform#JointAccelerationReserve> rdf:type owl:NamedIndividual ;
+                                                                   <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> .
+
+
+###  https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess
+<https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess> rdf:type owl:NamedIndividual ;
+                                                                        <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> .
+
+
+###  https://w3id.org/rockworx/acq/transform#KeyOperationalProblem
+<https://w3id.org/rockworx/acq/transform#KeyOperationalProblem> rdf:type owl:NamedIndividual ;
+                                                                <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> .
+
+
+###  https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive
+<https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive> rdf:type owl:NamedIndividual ;
+                                                                        <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> .
+
+
+###  https://w3id.org/rockworx/acq/transform#PortfolioScorecard
+<https://w3id.org/rockworx/acq/transform#PortfolioScorecard> rdf:type owl:NamedIndividual ;
+                                                             <http://www.w3.org/ns/prov#wasDerivedFrom> <https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265> .
+
+
 ###  https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives
 <https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives> rdf:type owl:NamedIndividual ,
                                                                                              <https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive> ;
@@ -482,6 +657,53 @@
 <https://w3id.org/rockworx/acq/transform#reorganizedProgramExecutiveOffices> rdf:type owl:NamedIndividual ,
                                                                                       <https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice> ;
                                                                              rdfs:label "The reorganized Program Executive Offices" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil> <http://purl.obolibrary.org/obo/IAO_0000115> "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio." ;
+                                                                 rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+                                                                 rdfs:label "Capability Trade Council" ;
+                                                                 <http://www.w3.org/2004/02/skos/core#definition> "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio." ;
+                                                                 <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+
+
+<https://w3id.org/rockworx/acq/transform#JointAccelerationReserve> <http://purl.obolibrary.org/obo/IAO_0000115> "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding." ;
+                                                                   rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+                                                                   rdfs:label "Joint Acceleration Reserve" ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding." ;
+                                                                   <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+
+
+<https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess> <http://purl.obolibrary.org/obo/IAO_0000115> "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents." ;
+                                                                        rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+                                                                        rdfs:label "Joint Force Requirements Process" ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents." ;
+                                                                        <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+
+
+<https://w3id.org/rockworx/acq/transform#KeyOperationalProblem> <http://purl.obolibrary.org/obo/IAO_0000115> "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents." ;
+                                                                rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+                                                                rdfs:label "Key Operational Problem" ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents." ;
+                                                                <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+
+
+<https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive> <http://purl.obolibrary.org/obo/IAO_0000115> "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office." ;
+                                                                        rdfs:comment "This class represents the organizational office, not the role borne by a person." ;
+                                                                        rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+                                                                        rdfs:label "Portfolio Acquisition Executive" ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office." ;
+                                                                        <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
+
+
+<https://w3id.org/rockworx/acq/transform#PortfolioScorecard> <http://purl.obolibrary.org/obo/IAO_0000115> "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field." ;
+                                                             rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+                                                             rdfs:label "Portfolio Scorecard" ;
+                                                             <http://www.w3.org/2004/02/skos/core#definition> "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field." ;
+                                                             <https://w3id.org/rockworx/acq/transform#authorityTier> "POLICY" .
 
 
 ###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

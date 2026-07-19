@@ -26,6 +26,9 @@
   "@id" : "http://purl.obolibrary.org/obo/BFO_0000035",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
 }, {
+  "@id" : "http://purl.obolibrary.org/obo/BFO_0000040",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
   "@id" : "http://purl.obolibrary.org/obo/BFO_0000057",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
@@ -54,7 +57,18 @@
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
   "@id" : "http://www.w3.org/ns/prov#wasDerivedFrom",
-  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "PROV-O: relates a legislative candidate change to the legislative instrument (bill, report, or public law) whose text it was extracted from."
+  }, {
+    "@value" : "PROV-O: the subject entity was derived from the object entity. Reused here (NOT minted) so that a requirement or KPP traces to the statutory or policy authority that establishes it; declared locally only so the tag-library generator emits its connection def."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Reused from PROV-O for requirement-to-authority tracing; not a RockWorx-minted property."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "was derived from"
+  } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq",
   "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
@@ -62,16 +76,22 @@
     "@value" : "RockWorx Aerospace"
   } ],
   "http://purl.org/dc/terms/description" : [ {
-    "@value" : "A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle (DoDI 5000.85) and its 2025 WAS/JFRP reform, with a working SysML v2 integration."
+    "@value" : "A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle in four modules: the base (DoDI 5000.85 Major Capability Acquisition -- what IS law/policy), the transformation overlay (the 2025 Warfighting Acquisition System / Joint Force Requirements Process reform), the legislative-horizon layer (what MIGHT become law -- pending bills as non-asserted candidate changes), and the SysML v2 link bridge. Creator: RockWorx Aerospace. License: BSD-3-Clause."
   } ],
   "http://purl.org/dc/terms/license" : [ {
     "@id" : "https://opensource.org/licenses/BSD-3-Clause"
   } ],
   "http://purl.org/dc/terms/title" : [ {
-    "@value" : "RockWorx Acquisition Ontology + SysML v2 Link"
+    "@value" : "RockWorx Acquisition Ontology"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "RockWorx Acquisition Ontology"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/2026-07-18"
   } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
-    "@value" : "2026-07-19"
+    "@value" : "2026-07-18"
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq#AcquisitionGate",
@@ -90,6 +110,8 @@
   } ],
   "http://www.w3.org/2002/07/owl#disjointWith" : [ {
     "@id" : "https://w3id.org/rockworx/acq#TechnicalReview"
+  }, {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum)."
@@ -109,6 +131,9 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.obolibrary.org/obo/BFO_0000035"
   } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
+  } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C)."
   } ]
@@ -126,6 +151,9 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&D, O&S); it occupies a one-dimensional temporal region."
@@ -163,6 +191,9 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://www.commoncoreontologies.org/ont00000958"
   } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
+  } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element."
   } ]
@@ -198,6 +229,9 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://www.commoncoreontologies.org/ont00001180"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office)."
@@ -235,6 +269,9 @@
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://www.commoncoreontologies.org/ont00000228"
   } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
+  } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process)."
   } ]
@@ -270,6 +307,9 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://www.commoncoreontologies.org/ont00000228"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
   } ],
   "http://www.w3.org/2004/02/skos/core#definition" : [ {
     "@value" : "A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate."
@@ -449,8 +489,320 @@
     "@value" : "Relates a construct to a prior construct it supersedes (e.g. a reformed process superseding a legacy one)."
   } ]
 }, {
-  "@id" : "https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil",
+  "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A descriptive information content entity that DESCRIBES a proposed, not-yet-in-effect change to the defense acquisition system, extracted from a specific legislative instrument. EPISTEMIC DISCIPLINE: asserting an instance of this class asserts ONLY that the proposal exists and what it describes -- it does NOT assert that the described change is in effect. Prospective is not asserted."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Legislative Candidate Change"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000853"
+  } ],
+  "http://www.w3.org/2002/07/owl#disjointWith" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeInstrument"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A descriptive information content entity describing a proposed, not-yet-in-effect change to the defense acquisition system, extracted from a specific legislative instrument; prospective, never asserted as in effect."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeInstrument",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "A document content entity that is a bill, amendment, committee report, or enacted public law before or passed by the United States Congress (e.g. H.R. 3838, S. 4784, Public Law 119-60). Its existence is a matter of public record; asserting it asserts only that the document exists."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Legislative Instrument"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00002039"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A document content entity that is a bill, amendment, committee report, or enacted public law before or passed by the United States Congress."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#changeType",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "What the proposal would do to the referenced construct if enacted: ADD | MODIFY | SUPERSEDE."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "change type"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "What the proposal would do to the referenced construct if enacted: ADD | MODIFY | SUPERSEDE."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#enactmentLikelihood",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "An explicit, sourced JUDGMENT of the likelihood the proposal is enacted: LOW | MEDIUM | HIGH. This is a judgment, NEVER a fact; it is an annotation and is invisible to the reasoner. It must always be paired with a likelihoodBasis."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "enactment likelihood"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An explicit, sourced judgment (LOW | MEDIUM | HIGH) of the likelihood of enactment; a judgment, never a fact."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#graduatedTo",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "On enactment, points a (now owl:deprecated) legislative candidate change to the base/transform construct that received the enacted change through the governed, append-only graduation migration."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "graduated to"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Points an enacted, graduated candidate change to the base/transform construct that received the change."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#impactAssessment",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The analytic narrative of the downstream effect the proposal would have on the acquisition process if enacted -- the product of the horizon layer."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "impact assessment"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "The analytic narrative of the downstream effect the proposal would have if enacted."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#legislativeMaturity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The rung a legislative candidate change occupies on the legislative-maturity ladder, taken from the Congress.gov API's real status: one of proposed | introduced | reported | passed-one-chamber | in-conference | enacted. On 'enacted' the candidate graduates out of the horizon into transform/base with statutory provenance."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "legislative maturity"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "The legislative-maturity rung (proposed | introduced | reported | passed-one-chamber | in-conference | enacted), taken from the source's real status."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#likelihoodBasis",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The sourced rationale for an enactmentLikelihood judgment; a likelihood is never a bare value."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "likelihood basis"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "The sourced rationale for an enactmentLikelihood judgment."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#prospectiveAuthorityTier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The authority tier a legislative candidate change WOULD establish if enacted -- e.g. STATUTE-PENDING (a pending statute). This is a horizon-layer annotation about a proposal; it is distinct from the transform layer's rwxt:authorityTier, which records the ASSERTED authority basis of an in-effect construct. Keeping them separate preserves the prospective-vs-asserted boundary. On enactment the construct gains rwxt:authorityTier via the graduation migration, not this property."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "prospective authority tier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "The authority tier a legislative candidate change would establish if enacted (e.g. STATUTE-PENDING); distinct from the transform layer's asserted authorityTier."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/horizon#wouldAffect",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a legislative candidate change to the existing base or transform construct it would ADD to, MODIFY, or SUPERSEDE if the proposal were enacted. This is an INTENSIONAL reference for analysis only: it asserts NO change to the referenced construct. It is deliberately NOT a subproperty of any base relation and carries no range axiom, so a reasoner infers nothing about the referenced construct. The target construct is referenced by its class IRI via OWL 2 punning (a class name used as an individual)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/horizon#LegislativeCandidateChange"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "would affect"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a legislative candidate change to the base/transform construct it would add to, modify, or supersede if enacted; an intensional reference that asserts no change to the target."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#assessedAt",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a requirement or key performance parameter to the technical review at which its satisfaction is assessed."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000958"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "assessed at"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#TechnicalReview"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a requirement or key performance parameter to the technical review at which its satisfaction is assessed."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#assessesRisk",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a risk assessment (a descriptive information content entity) to the program risk (a disposition) it describes."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#RiskAssessment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "assesses risk"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#ProgramRisk"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#indicatesRisk",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a process, such as a failed verification, to the program risk (a disposition) whose presence it indicates. Deliberately NOT BFO 'realizes' (obo:BFO_0000055): a failed test EVIDENCES the risk disposition; it does not realize it -- the risk is realized by the later undesired programmatic process."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "indicates risk"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#ProgramRisk"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a process, such as a failed verification, to the program risk whose presence it indicates (evidential, not BFO realization)."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#riskDisposition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The program's handling decision for the risk arising from a verification's outcome: Open (unmitigated -- blocks a milestone gate) or Accepted (formally accepted -- does not block, and the failed result is retained)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "risk disposition"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#riskSeverity",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The assessed severity a risk assessment records for the program risk it describes (LOW, MEDIUM, or HIGH)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#RiskAssessment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "risk severity"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#riskStatus",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The management status a risk assessment records (Open, Closed, or Accepted); only an Open assessment of a risk blocks a milestone gate."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#RiskAssessment"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "risk status"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#satisfies",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a design element (a material entity) to the requirement or key performance parameter that it satisfies."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000040"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "satisfies"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000958"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a design element (a material entity) to the requirement or key performance parameter that it satisfies."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#verificationResult",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "The recorded outcome of a verification (e.g. PASS or FAIL); a FAIL is the explicit datum from which a program risk is derived."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "verification result"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "http://www.w3.org/2001/XMLSchema#string"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/sysml#verifies",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
+  "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
+    "@value" : "Relates a verification activity (a process) to the requirement or key performance parameter whose satisfaction it establishes by evidence."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#domain" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/BFO_0000015"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/sysml"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "verifies"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#range" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000958"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "Relates a verification activity (a process) to the requirement or key performance parameter whose satisfaction it establishes by evidence."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
     "@value" : "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio."
   } ],
@@ -605,7 +957,7 @@
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#JointAccelerationReserve",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
     "@value" : "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding."
   } ],
@@ -629,7 +981,7 @@
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
     "@value" : "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents."
   } ],
@@ -653,7 +1005,7 @@
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#KeyOperationalProblem",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
     "@value" : "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents."
   } ],
@@ -679,7 +1031,7 @@
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
     "@value" : "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office."
   } ],
@@ -706,7 +1058,7 @@
   } ]
 }, {
   "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioScorecard",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class", "http://www.w3.org/2002/07/owl#NamedIndividual" ],
   "http://purl.obolibrary.org/obo/IAO_0000115" : [ {
     "@value" : "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field."
   } ],
