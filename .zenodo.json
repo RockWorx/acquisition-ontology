@@ -1,0 +1,15 @@
+{
+  "title": "RockWorx Acquisition Ontology (base + transform + legislative-horizon + SysML v2 link)",
+  "description": "A BFO 2020 / CCO 2.1-conformant ontology of the U.S. Department of Defense acquisition lifecycle (DoDI 5000.85 Major Capability Acquisition), its 2025 Warfighting Acquisition System / Joint Force Requirements Process reform, a legislative-horizon layer that models pending defense-acquisition bills as non-asserted candidate changes, and a standards-based link that resolves SysML v2 system models into the acquisition-process semantics. Published in four modules with reproducible demonstrators; the credibility linchpin of the horizon layer -- prospective != asserted -- is machine-proven by an OWL reasoner.",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "license": "BSD-3-Clause",
+  "creators": [
+    {"name": "RockWorx Aerospace"}
+  ],
+  "keywords": [
+    "BFO", "BFO 2020", "Common Core Ontologies", "CCO", "DoD acquisition",
+    "defense acquisition", "ontology", "OWL", "SysML v2", "digital engineering",
+    "legislative horizon"
+  ]
+}
