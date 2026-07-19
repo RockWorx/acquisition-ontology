@@ -1,0 +1,380 @@
+[ {
+  "@id" : "_:genid1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#isRequirementsInputTo"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#JCIDS"
+  } ]
+}, {
+  "@id" : "_:genid2",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
+  "http://www.w3.org/2002/07/owl#onProperty" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#isRequirementsInputTo"
+  } ],
+  "http://www.w3.org/2002/07/owl#someValuesFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess"
+  } ]
+}, {
+  "@id" : "http://purl.obolibrary.org/obo/BFO_0000057",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://purl.org/dc/terms/creator",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/2004/02/skos/core#definition",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://www.w3.org/ns/prov#wasDerivedFrom",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#FundingSource",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#ProgramOversightOrganization",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#RequirementDeterminationProcess",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq#isRequirementsInputTo",
+  "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ],
+  "http://purl.org/dc/terms/creator" : [ {
+    "@value" : "RockWorx Aerospace"
+  } ],
+  "http://purl.org/dc/terms/license" : [ {
+    "@id" : "https://opensource.org/licenses/BSD-3-Clause"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "RockWorx Acquisition Transformation Overlay"
+  } ],
+  "http://www.w3.org/2002/07/owl#imports" : [ {
+    "@id" : "http://purl.obolibrary.org/obo/iao.owl"
+  }, {
+    "@id" : "https://w3id.org/rockworx/acq"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform/2026-07-18"
+  } ],
+  "http://www.w3.org/2002/07/owl#versionInfo" : [ {
+    "@value" : "2026-07-18"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "The transformation overlay ontology: reformed and legacy fillers of the base RWXA acquisition-lifecycle roles, linked by deprecation and provenance to the Defense Acquisition System reform of 2025."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Capability Trade Council"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00001180"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio."
+  } ],
+  "http://www.w3.org/ns/prov#wasDerivedFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://w3id.org/rockworx/acq/transform#authorityTier" : [ {
+    "@value" : "POLICY"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#ConfigurationSteeringBoard",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Configuration Steering Board"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00001180"
+  } ],
+  "http://www.w3.org/2002/07/owl#deprecated" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An organization that is the legacy board responsible for requirement-versus-cost trades on a single program, replaced by capability trade councils operating at the portfolio level."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#DASReform2025",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://purl.obolibrary.org/obo/BFO_0000057" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#reorganizedProgramExecutiveOffices"
+  } ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "Temporally bounded 2025-present; directed by Executive Order 14265 (November 2025)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Defense Acquisition System Reform of 2025"
+  } ],
+  "https://www.commoncoreontologies.org/ont00001921" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://www.commoncoreontologies.org/ont00001986" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Defense Acquisition System Reform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000228"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00002039"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Executive Order 14265"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#InitialCapabilitiesDocument",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#KeyOperationalProblem"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Initial Capabilities Document"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000965"
+  }, {
+    "@id" : "_:genid1"
+  } ],
+  "http://www.w3.org/2002/07/owl#deprecated" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A prescriptive information content entity that is the legacy JCIDS document prescribing a capability requirement, identifying a capability gap and a preferred materiel approach."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#JCIDS",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Joint Capabilities Integration and Development System"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#RequirementDeterminationProcess"
+  } ],
+  "http://www.w3.org/2002/07/owl#deprecated" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A planned process that is the disestablished pre-2025 joint requirements process by which capability requirements were determined via prescriptive capability documents."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#JointAccelerationReserve",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Joint Acceleration Reserve"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#FundingSource"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding."
+  } ],
+  "http://www.w3.org/ns/prov#wasDerivedFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://w3id.org/rockworx/acq/transform#authorityTier" : [ {
+    "@value" : "POLICY"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Joint Force Requirements Process"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#RequirementDeterminationProcess"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents."
+  } ],
+  "http://www.w3.org/ns/prov#wasDerivedFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://w3id.org/rockworx/acq/transform#authorityTier" : [ {
+    "@value" : "POLICY"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#KeyOperationalProblem",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Key Operational Problem"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00000476"
+  }, {
+    "@id" : "_:genid2"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents."
+  } ],
+  "http://www.w3.org/ns/prov#wasDerivedFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://w3id.org/rockworx/acq/transform#authorityTier" : [ {
+    "@value" : "POLICY"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "This class represents the organizational office, not the role borne by a person."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Portfolio Acquisition Executive"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#ProgramOversightOrganization"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office."
+  } ],
+  "http://www.w3.org/ns/prov#wasDerivedFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://w3id.org/rockworx/acq/transform#authorityTier" : [ {
+    "@value" : "POLICY"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioScorecard",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Portfolio Scorecard"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://www.commoncoreontologies.org/ont00002039"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field."
+  } ],
+  "http://www.w3.org/ns/prov#wasDerivedFrom" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"
+  } ],
+  "https://w3id.org/rockworx/acq/transform#authorityTier" : [ {
+    "@value" : "POLICY"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.obolibrary.org/obo/IAO_0100001" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@value" : "This class represents the organizational office, not the role borne by a person."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "Program Executive Office"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
+    "@id" : "https://w3id.org/rockworx/acq#ProgramOversightOrganization"
+  } ],
+  "http://www.w3.org/2002/07/owl#deprecated" : [ {
+    "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+    "@value" : "true"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "An organization that is the legacy program-executive office, reorganized under the Defense Acquisition System reform into Portfolio Acquisition Executive portfolios."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#authorityTier",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "authority tier"
+  } ],
+  "http://www.w3.org/2004/02/skos/core#definition" : [ {
+    "@value" : "The level of authority -- STATUTE > POLICY > GUIDANCE -- from which an acquisition construct is derived."
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "The established Portfolio Acquisition Executives"
+  } ]
+}, {
+  "@id" : "https://w3id.org/rockworx/acq/transform#reorganizedProgramExecutiveOffices",
+  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
+  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
+    "@id" : "https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@value" : "The reorganized Program Executive Offices"
+  } ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00000228",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00000476",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00000965",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00001180",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00001921",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00001986",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "https://www.commoncoreontologies.org/ont00002039",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+} ]

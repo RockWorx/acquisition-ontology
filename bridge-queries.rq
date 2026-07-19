@@ -1,0 +1,72 @@
+# SKEDS bridge-queries.rq -- SPARQL patterns for querying ACROSS the
+# ICE -> Objective reform (see RELEASE_NOTES.md, "The ICE -> Objective
+# shift"). Run against the union of rwx-acq-base.ttl + rwx-acq-transform.ttl
+# (both, or a triplestore they have been loaded into) -- the second pattern
+# in particular is meaningless against the base module alone, since the
+# legacy/reformed classes it names live in the transform overlay.
+#
+# License: BSD-3-Clause. Copyright (c) 2026 RockWorx Aerospace.
+
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:    <http://www.w3.org/2002/07/owl#>
+PREFIX cco:    <https://www.commoncoreontologies.org/>
+PREFIX rwxa:   <https://w3id.org/rockworx/acq#>
+PREFIX rwxt:   <https://w3id.org/rockworx/acq/transform#>
+
+# ------------------------------------------------------------------
+# (1) Requirement-input classes via the isRequirementsInputTo restriction.
+#
+# Do NOT query legacy requirements input by class alone (e.g. by asking
+# "give me every rwxt:InitialCapabilitiesDocument") -- the reform is a
+# change of KIND, not just a renamed class: the legacy Initial Capabilities
+# Document is a Prescriptive information content entity (cco:ont00000965,
+# prescribes-the-solution), while the reformed Key Operational Problem is
+# an Objective (cco:ont00000476, states-the-problem). A class-only query
+# silently returns only one side of the reform. This restriction-based
+# pattern instead asks the ontology directly: "which classes are asserted,
+# by an owl:someValuesFrom restriction on isRequirementsInputTo, to feed
+# SOME requirement-determination process?" -- it returns both the legacy
+# filler (InitialCapabilitiesDocument -> JCIDS) and the reformed filler
+# (KeyOperationalProblem -> JointForceRequirementsProcess) uniformly,
+# without the caller having to know the class names or the reform history
+# up front.
+# ------------------------------------------------------------------
+SELECT ?reqInput ?process
+WHERE {
+  ?reqInput rdfs:subClassOf [
+    owl:onProperty rwxa:isRequirementsInputTo ;
+    owl:someValuesFrom ?process
+  ] .
+}
+
+
+# ------------------------------------------------------------------
+# (2) Requirement artifacts across the reform: legacy Prescriptive ICE
+# (cco:ont00000965) UNION reformed Objective (cco:ont00000476).
+#
+# This is the query that DOES bridge the two eras deliberately: it unions
+# the legacy branch (anything typed as, or a subclass of, the Prescriptive
+# ICE class) with the reformed branch (anything typed as, or a subclass of,
+# the Objective/KOP class), so a caller who wants "every requirements
+# artifact regardless of which side of the 2025 reform it was authored on"
+# gets both without having to enumerate rwxt:InitialCapabilitiesDocument
+# and rwxt:KeyOperationalProblem by name. ?era distinguishes which branch
+# each result came from, since the two are NOT interchangeable in kind
+# (prescriptive vs. objective) even though this query treats them as one
+# retrieval set.
+# ------------------------------------------------------------------
+SELECT ?artifact ?artifactClass ?era
+WHERE {
+  {
+    ?artifact rdf:type ?artifactClass .
+    ?artifactClass rdfs:subClassOf* cco:ont00000965 .
+    BIND("legacy-Prescriptive-ICE" AS ?era)
+  }
+  UNION
+  {
+    ?artifact rdf:type ?artifactClass .
+    ?artifactClass rdfs:subClassOf* cco:ont00000476 .
+    BIND("reformed-Objective-KOP" AS ?era)
+  }
+}

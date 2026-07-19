@@ -1,0 +1,135 @@
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rwxa: <https://w3id.org/rockworx/acq#> .
+@prefix rwxt: <https://w3id.org/rockworx/acq/transform#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rwxt:ConfigurationSteeringBoard a owl:Class ;
+    rdfs:label "Configuration Steering Board" ;
+    obo:IAO_0100001 rwxt:CapabilityTradeCouncil ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf cco:ont00001180 ;
+    owl:deprecated true ;
+    skos:definition "An organization that is the legacy board responsible for requirement-versus-cost trades on a single program, replaced by capability trade councils operating at the portfolio level." .
+
+rwxt:DASReform2025 a rwxt:DefenseAcquisitionSystemReform ;
+    rdfs:label "Defense Acquisition System Reform of 2025" ;
+    obo:BFO_0000057 rwxt:reorganizedProgramExecutiveOffices ;
+    rdfs:comment "Temporally bounded 2025-present; directed by Executive Order 14265 (November 2025)." ;
+    cco:ont00001921 rwxt:ExecutiveOrder14265 ;
+    cco:ont00001986 rwxt:establishedPortfolioAcquisitionExecutives .
+
+rwxt:InitialCapabilitiesDocument a owl:Class ;
+    rdfs:label "Initial Capabilities Document" ;
+    obo:IAO_0100001 rwxt:KeyOperationalProblem ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty rwxa:isRequirementsInputTo ;
+            owl:someValuesFrom rwxt:JCIDS ],
+        cco:ont00000965 ;
+    owl:deprecated true ;
+    skos:definition "A prescriptive information content entity that is the legacy JCIDS document prescribing a capability requirement, identifying a capability gap and a preferred materiel approach." .
+
+rwxt:JointAccelerationReserve a owl:Class ;
+    rdfs:label "Joint Acceleration Reserve" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf rwxa:FundingSource ;
+    skos:definition "A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding." ;
+    prov:wasDerivedFrom rwxt:ExecutiveOrder14265 ;
+    rwxt:authorityTier "POLICY" .
+
+rwxt:PortfolioScorecard a owl:Class ;
+    rdfs:label "Portfolio Scorecard" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf cco:ont00002039 ;
+    skos:definition "A document content entity that is the Defense Acquisition System reform's data-driven portfolio performance record, whose primary measure is time-to-field." ;
+    prov:wasDerivedFrom rwxt:ExecutiveOrder14265 ;
+    rwxt:authorityTier "POLICY" .
+
+rwxt:authorityTier a owl:AnnotationProperty ;
+    rdfs:label "authority tier" ;
+    skos:definition "The level of authority -- STATUTE > POLICY > GUIDANCE -- from which an acquisition construct is derived." .
+
+rwxt:CapabilityTradeCouncil a owl:Class ;
+    rdfs:label "Capability Trade Council" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf cco:ont00001180 ;
+    skos:definition "An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio." ;
+    prov:wasDerivedFrom rwxt:ExecutiveOrder14265 ;
+    rwxt:authorityTier "POLICY" .
+
+rwxt:DefenseAcquisitionSystemReform a owl:Class ;
+    rdfs:label "Defense Acquisition System Reform" ;
+    rdfs:subClassOf cco:ont00000228 .
+
+rwxt:JCIDS a owl:Class ;
+    rdfs:label "Joint Capabilities Integration and Development System" ;
+    obo:IAO_0100001 rwxt:JointForceRequirementsProcess ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf rwxa:RequirementDeterminationProcess ;
+    owl:deprecated true ;
+    skos:definition "A planned process that is the disestablished pre-2025 joint requirements process by which capability requirements were determined via prescriptive capability documents." .
+
+rwxt:KeyOperationalProblem a owl:Class ;
+    rdfs:label "Key Operational Problem" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty rwxa:isRequirementsInputTo ;
+            owl:someValuesFrom rwxt:JointForceRequirementsProcess ],
+        cco:ont00000476 ;
+    skos:definition "An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents." ;
+    prov:wasDerivedFrom rwxt:ExecutiveOrder14265 ;
+    rwxt:authorityTier "POLICY" .
+
+rwxt:ProgramExecutiveOffice a owl:Class ;
+    rdfs:label "Program Executive Office" ;
+    obo:IAO_0100001 rwxt:PortfolioAcquisitionExecutive ;
+    rdfs:comment "This class represents the organizational office, not the role borne by a person." ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf rwxa:ProgramOversightOrganization ;
+    owl:deprecated true ;
+    skos:definition "An organization that is the legacy program-executive office, reorganized under the Defense Acquisition System reform into Portfolio Acquisition Executive portfolios." .
+
+rwxt:establishedPortfolioAcquisitionExecutives a rwxt:PortfolioAcquisitionExecutive ;
+    rdfs:label "The established Portfolio Acquisition Executives" .
+
+rwxt:reorganizedProgramExecutiveOffices a rwxt:ProgramExecutiveOffice ;
+    rdfs:label "The reorganized Program Executive Offices" .
+
+rwxa:isRequirementsInputTo a owl:ObjectProperty .
+
+rwxt:JointForceRequirementsProcess a owl:Class ;
+    rdfs:label "Joint Force Requirements Process" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf rwxa:RequirementDeterminationProcess ;
+    skos:definition "A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents." ;
+    prov:wasDerivedFrom rwxt:ExecutiveOrder14265 ;
+    rwxt:authorityTier "POLICY" .
+
+rwxt:PortfolioAcquisitionExecutive a owl:Class ;
+    rdfs:label "Portfolio Acquisition Executive" ;
+    rdfs:comment "This class represents the organizational office, not the role borne by a person." ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/transform> ;
+    rdfs:subClassOf rwxa:ProgramOversightOrganization ;
+    skos:definition "An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office." ;
+    prov:wasDerivedFrom rwxt:ExecutiveOrder14265 ;
+    rwxt:authorityTier "POLICY" .
+
+rwxt:ExecutiveOrder14265 a cco:ont00002039 ;
+    rdfs:label "Executive Order 14265" .
+
+<https://w3id.org/rockworx/acq/transform> a owl:Ontology ;
+    rdfs:label "RockWorx Acquisition Transformation Overlay" ;
+    dcterms:creator "RockWorx Aerospace" ;
+    dcterms:license <https://opensource.org/licenses/BSD-3-Clause> ;
+    owl:imports obo:iao.owl,
+        <https://w3id.org/rockworx/acq> ;
+    owl:versionIRI <https://w3id.org/rockworx/acq/transform/2026-07-18> ;
+    owl:versionInfo "2026-07-18" ;
+    skos:definition "The transformation overlay ontology: reformed and legacy fillers of the base RWXA acquisition-lifecycle roles, linked by deprecation and provenance to the Defense Acquisition System reform of 2025." .
+

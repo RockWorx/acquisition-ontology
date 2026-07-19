@@ -1,0 +1,406 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/rockworx/acq/transform#"
+     xml:base="https://w3id.org/rockworx/acq/transform"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:www="https://www.commoncoreontologies.org/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:transform="https://w3id.org/rockworx/acq/transform#">
+    <owl:Ontology rdf:about="https://w3id.org/rockworx/acq/transform">
+        <owl:versionIRI rdf:resource="https://w3id.org/rockworx/acq/transform/2026-07-18"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/iao.owl"/>
+        <owl:imports rdf:resource="https://w3id.org/rockworx/acq"/>
+        <terms:creator>RockWorx Aerospace</terms:creator>
+        <terms:license rdf:resource="https://opensource.org/licenses/BSD-3-Clause"/>
+        <rdfs:label>RockWorx Acquisition Transformation Overlay</rdfs:label>
+        <owl:versionInfo>2026-07-18</owl:versionInfo>
+        <skos:definition>The transformation overlay ontology: reformed and legacy fillers of the base RWXA acquisition-lifecycle roles, linked by deprecation and provenance to the Defense Acquisition System reform of 2025.</skos:definition>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000057 -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000057"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#definition -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#definition"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasDerivedFrom -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#authorityTier -->
+
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/rockworx/acq/transform#authorityTier">
+        <rdfs:label>authority tier</rdfs:label>
+        <skos:definition>The level of authority -- STATUTE &gt; POLICY &gt; GUIDANCE -- from which an acquisition construct is derived.</skos:definition>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001921 -->
+
+
+    <owl:AnnotationProperty rdf:about="https://www.commoncoreontologies.org/ont00001921"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001986 -->
+
+
+    <owl:AnnotationProperty rdf:about="https://www.commoncoreontologies.org/ont00001986"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#isRequirementsInputTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#isRequirementsInputTo"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#FundingSource -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#FundingSource"/>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#ProgramOversightOrganization -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#ProgramOversightOrganization"/>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#RequirementDeterminationProcess -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#RequirementDeterminationProcess"/>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001180"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Capability Trade Council</rdfs:label>
+        <skos:definition>An organization that replaces configuration steering boards, integrating operational and acquisition authorities into a single body that adjudicates requirement-versus-cost trades for a capability portfolio.</skos:definition>
+        <prov:wasDerivedFrom rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <authorityTier>POLICY</authorityTier>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#ConfigurationSteeringBoard -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#ConfigurationSteeringBoard">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001180"/>
+        <obo:IAO_0100001 rdf:resource="https://w3id.org/rockworx/acq/transform#CapabilityTradeCouncil"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Configuration Steering Board</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition>An organization that is the legacy board responsible for requirement-versus-cost trades on a single program, replaced by capability trade councils operating at the portfolio level.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000228"/>
+        <rdfs:label>Defense Acquisition System Reform</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#InitialCapabilitiesDocument -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#InitialCapabilitiesDocument">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000965"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/rockworx/acq#isRequirementsInputTo"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/rockworx/acq/transform#JCIDS"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0100001 rdf:resource="https://w3id.org/rockworx/acq/transform#KeyOperationalProblem"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Initial Capabilities Document</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition>A prescriptive information content entity that is the legacy JCIDS document prescribing a capability requirement, identifying a capability gap and a preferred materiel approach.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#JCIDS -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#JCIDS">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/rockworx/acq#RequirementDeterminationProcess"/>
+        <obo:IAO_0100001 rdf:resource="https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Joint Capabilities Integration and Development System</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition>A planned process that is the disestablished pre-2025 joint requirements process by which capability requirements were determined via prescriptive capability documents.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#JointAccelerationReserve -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#JointAccelerationReserve">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/rockworx/acq#FundingSource"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Joint Acceleration Reserve</rdfs:label>
+        <skos:definition>A funding source that is the CAPE-maintained (Cost Assessment and Program Evaluation) reserve established to address the valley of death between prototype demonstration and program of record funding.</skos:definition>
+        <prov:wasDerivedFrom rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <authorityTier>POLICY</authorityTier>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/rockworx/acq#RequirementDeterminationProcess"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Joint Force Requirements Process</rdfs:label>
+        <skos:definition>A planned process that is the Joint Force Requirements Process (JFRP) that replaced JCIDS; under it the re-oriented Joint Requirements Oversight Council (JROC) ranks Key Operational Problems rather than validating prescriptive capability documents.</skos:definition>
+        <prov:wasDerivedFrom rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <authorityTier>POLICY</authorityTier>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#KeyOperationalProblem -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#KeyOperationalProblem">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000476"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://w3id.org/rockworx/acq#isRequirementsInputTo"/>
+                <owl:someValuesFrom rdf:resource="https://w3id.org/rockworx/acq/transform#JointForceRequirementsProcess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Key Operational Problem</rdfs:label>
+        <skos:definition>An objective that is a prioritized joint-force operational problem ranked by the re-oriented Joint Requirements Oversight Council (JROC); the requirements root that replaced JCIDS capability documents.</skos:definition>
+        <prov:wasDerivedFrom rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <authorityTier>POLICY</authorityTier>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/rockworx/acq#ProgramOversightOrganization"/>
+        <rdfs:comment>This class represents the organizational office, not the role borne by a person.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Portfolio Acquisition Executive</rdfs:label>
+        <skos:definition>An organization that is the single accountable portfolio office under the Defense Acquisition System reform, holding acquisition authority across a capability portfolio in place of a program-by-program Program Executive Office.</skos:definition>
+        <prov:wasDerivedFrom rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <authorityTier>POLICY</authorityTier>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#PortfolioScorecard -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#PortfolioScorecard">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00002039"/>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Portfolio Scorecard</rdfs:label>
+        <skos:definition>A document content entity that is the Defense Acquisition System reform&apos;s data-driven portfolio performance record, whose primary measure is time-to-field.</skos:definition>
+        <prov:wasDerivedFrom rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <authorityTier>POLICY</authorityTier>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice -->
+
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/rockworx/acq#ProgramOversightOrganization"/>
+        <obo:IAO_0100001 rdf:resource="https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive"/>
+        <rdfs:comment>This class represents the organizational office, not the role borne by a person.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq/transform"/>
+        <rdfs:label>Program Executive Office</rdfs:label>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+        <skos:definition>An organization that is the legacy program-executive office, reorganized under the Defense Acquisition System reform into Portfolio Acquisition Executive portfolios.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000228 -->
+
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000228"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000476 -->
+
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000476"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00000965 -->
+
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00000965"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00001180 -->
+
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00001180"/>
+    
+
+
+    <!-- https://www.commoncoreontologies.org/ont00002039 -->
+
+
+    <owl:Class rdf:about="https://www.commoncoreontologies.org/ont00002039"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#DASReform2025 -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/rockworx/acq/transform#DASReform2025">
+        <rdf:type rdf:resource="https://w3id.org/rockworx/acq/transform#DefenseAcquisitionSystemReform"/>
+        <obo:BFO_0000057 rdf:resource="https://w3id.org/rockworx/acq/transform#reorganizedProgramExecutiveOffices"/>
+        <rdfs:comment>Temporally bounded 2025-present; directed by Executive Order 14265 (November 2025).</rdfs:comment>
+        <rdfs:label>Defense Acquisition System Reform of 2025</rdfs:label>
+        <www:ont00001921 rdf:resource="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265"/>
+        <www:ont00001986 rdf:resource="https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265 -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/rockworx/acq/transform#ExecutiveOrder14265">
+        <rdf:type rdf:resource="https://www.commoncoreontologies.org/ont00002039"/>
+        <rdfs:label>Executive Order 14265</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/rockworx/acq/transform#establishedPortfolioAcquisitionExecutives">
+        <rdf:type rdf:resource="https://w3id.org/rockworx/acq/transform#PortfolioAcquisitionExecutive"/>
+        <rdfs:label>The established Portfolio Acquisition Executives</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq/transform#reorganizedProgramExecutiveOffices -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/rockworx/acq/transform#reorganizedProgramExecutiveOffices">
+        <rdf:type rdf:resource="https://w3id.org/rockworx/acq/transform#ProgramExecutiveOffice"/>
+        <rdfs:label>The reorganized Program Executive Offices</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

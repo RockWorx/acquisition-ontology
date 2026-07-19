@@ -1,0 +1,107 @@
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rwxacq: <https://w3id.org/rockworx/acq#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+rwxacq:AcquisitionGate a owl:Class ;
+    rdfs:label "Acquisition Gate" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf cco:ont00000228 ;
+    owl:disjointWith rwxacq:TechnicalReview ;
+    skos:definition "A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum)." .
+
+rwxacq:AcquisitionMilestone a owl:Class ;
+    rdfs:label "Acquisition Milestone" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf obo:BFO_0000035 ;
+    skos:definition "A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C)." .
+
+rwxacq:AcquisitionPhase a owl:Class ;
+    rdfs:label "Acquisition Phase" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf obo:BFO_0000015 ;
+    skos:definition "A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&D, O&S); it occupies a one-dimensional temporal region." .
+
+rwxacq:FundingSource a owl:Class ;
+    rdfs:label "Funding Source" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf cco:ont00000958 ;
+    skos:definition "An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element." .
+
+rwxacq:ProgramOversightOrganization a owl:Class ;
+    rdfs:label "Program Oversight Organization" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf cco:ont00001180 ;
+    skos:definition "An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office)." .
+
+rwxacq:ProgramRisk a owl:Class ;
+    rdfs:label "Program Risk" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf obo:BFO_0000016 ;
+    skos:definition "A disposition of a program to realize an undesired outcome; it is realized in an undesired programmatic process." .
+
+rwxacq:RiskAssessment a owl:Class ;
+    rdfs:label "Risk Assessment" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf cco:ont00000853 ;
+    skos:definition "A descriptive information content entity that describes a program risk and bears likelihood and consequence qualities." .
+
+rwxacq:UndesiredProgrammaticProcess a owl:Class ;
+    rdfs:label "Undesired Programmatic Process" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf obo:BFO_0000015 ;
+    skos:definition "A programmatic process constituting an undesired outcome that a program risk is realized in." .
+
+rwxacq:demands a owl:ObjectProperty .
+
+rwxacq:demonstrates a owl:ObjectProperty .
+
+rwxacq:gates a owl:ObjectProperty .
+
+rwxacq:governs a owl:ObjectProperty .
+
+rwxacq:informs a owl:ObjectProperty .
+
+rwxacq:isRequirementsInputTo a owl:ObjectProperty ;
+    rdfs:label "is requirements input to" ;
+    rdfs:domain cco:ont00000958 ;
+    rdfs:range rwxacq:RequirementDeterminationProcess ;
+    skos:definition "Relates an information artifact (a capability requirement document or an operational problem statement) to the requirement-determination process it feeds." .
+
+rwxacq:owns a owl:ObjectProperty .
+
+rwxacq:performs a owl:ObjectProperty .
+
+rwxacq:precedes a owl:ObjectProperty .
+
+rwxacq:producesArtifact a owl:ObjectProperty .
+
+rwxacq:requiresArtifact a owl:ObjectProperty .
+
+rwxacq:supersedes a owl:ObjectProperty .
+
+rwxacq:RequirementDeterminationProcess a owl:Class ;
+    rdfs:label "Requirement Determination Process" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf cco:ont00000228 ;
+    skos:definition "A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process)." .
+
+rwxacq:TechnicalReview a owl:Class ;
+    rdfs:label "Technical Review" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq> ;
+    rdfs:subClassOf cco:ont00000228 ;
+    skos:definition "A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate." .
+
+<https://w3id.org/rockworx/acq> a owl:Ontology ;
+    rdfs:label "RockWorx Acquisition Ontology (Base)" ;
+    dcterms:creator "RockWorx Aerospace" ;
+    dcterms:description "The base RockWorx acquisition-lifecycle extension ontology, grounding DoD acquisition-lifecycle concepts to CCO/BFO." ;
+    dcterms:license <https://opensource.org/licenses/BSD-3-Clause> ;
+    owl:imports <http://purl.obolibrary.org/obo/bfo/2020/bfo.owl>,
+        cco:CommonCoreOntologiesMerged ;
+    owl:versionIRI <https://w3id.org/rockworx/acq/2026-07-18> ;
+    owl:versionInfo "2026-07-18" .
+
