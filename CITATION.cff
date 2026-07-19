@@ -28,3 +28,8 @@ keywords:
   - legislative horizon
 version: "1.0.0"
 date-released: "2026-07-19"
+doi: "10.5281/zenodo.21445548"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21445548"
+    description: "The Zenodo archive for v1.0.0."

@@ -1,5 +1,7 @@
 # RockWorx Acquisition Ontology + SysML v2 Link
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21445548.svg)](https://doi.org/10.5281/zenodo.21445548)
+
 A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle -- **plus** a legislative-horizon
 layer that models what Congress is about to change, **and** a working, standards-based link that
 resolves SysML v2 system models into it. Published as three ontology modules plus two reproducible
