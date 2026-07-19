@@ -9,4 +9,5 @@
   <uri name="https://w3id.org/rockworx/acq" uri="../rwx-acq-base.ttl"/>
   <uri name="https://w3id.org/rockworx/acq/transform" uri="../rwx-acq-transform.ttl"/>
   <uri name="https://w3id.org/rockworx/acq/sysml" uri="../sysml_link/bridge.ttl"/>
+  <uri name="https://w3id.org/rockworx/acq/horizon" uri="../rwx-acq-horizon.ttl"/>
 </catalog>

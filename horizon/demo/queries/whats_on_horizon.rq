@@ -1,0 +1,24 @@
+# "What is on the legislative horizon for the Milestone B / Major Capability Acquisition spine,
+#  and how likely?"  -- returns PROSPECTIVE (not-yet-enacted) candidate changes whose target
+#  construct sits on the milestone-decision / MCA-spine path, with their sourced likelihood judgment.
+PREFIX rwxh: <https://w3id.org/rockworx/acq/horizon#>
+PREFIX rwxa: <https://w3id.org/rockworx/acq#>
+PREFIX rwxt: <https://w3id.org/rockworx/acq/transform#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?maturity ?likelihood ?changeType ?affects ?candidate ?impact WHERE {
+  ?c a rwxh:LegislativeCandidateChange ;
+     rdfs:label ?candidate ;
+     rwxh:legislativeMaturity ?maturity ;
+     rwxh:enactmentLikelihood ?likelihood ;
+     rwxh:changeType ?changeType ;
+     rwxh:wouldAffect ?affectsIri ;
+     rwxh:impactAssessment ?impact .
+  FILTER (?maturity != "enacted")
+  VALUES ?affectsIri {
+     rwxa:AcquisitionGate rwxa:AcquisitionMilestone rwxa:RequirementDeterminationProcess
+     rwxa:FundingSource rwxt:PortfolioAcquisitionExecutive rwxt:JointForceRequirementsProcess
+     rwxt:CapabilityTradeCouncil rwxt:PortfolioScorecard
+  }
+  BIND(REPLACE(STR(?affectsIri), "^.*[#/]", "") AS ?affects)
+}

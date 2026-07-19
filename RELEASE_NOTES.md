@@ -1,10 +1,25 @@
 # SKEDS Acquisition Ontology -- Release Notes
 
-RockWorx Aerospace's DoD acquisition-lifecycle extension ontology, published in two
-modules. License: BSD-3-Clause. Creator: RockWorx Aerospace.
+RockWorx Aerospace's DoD acquisition-lifecycle extension ontology, published in three
+modules plus two demonstrators. License: BSD-3-Clause. Creator: RockWorx Aerospace.
 
-- Base:      https://w3id.org/rockworx/acq          (rwx-acq-base.ttl)
-- Transform: https://w3id.org/rockworx/acq/transform (rwx-acq-transform.ttl)
+- Base:      https://w3id.org/rockworx/acq           (rwx-acq-base.ttl)      -- what IS law/policy
+- Transform: https://w3id.org/rockworx/acq/transform (rwx-acq-transform.ttl) -- the 2025 reform
+- Horizon:   https://w3id.org/rockworx/acq/horizon   (rwx-acq-horizon.ttl)   -- what MIGHT become law
+
+## New: the legislative-horizon layer (rwx-acq-horizon)
+
+A third, PROSPECTIVE layer models what MIGHT become law -- pending U.S. defense-acquisition bills as
+NON-asserted candidate changes -- so leadership can query "what is Congress about to change, and how
+likely." The credibility linchpin is machine-proven: PROSPECTIVE != ASSERTED. Candidate changes are
+Descriptive ICEs `owl:disjointWith` the base roles; the affected construct is referenced by OWL 2 punning
+(no propagating semantics); maturity/likelihood/impact are annotation properties (a judgment can never be
+entailed as a fact); graduation on enactment is a governed, append-only migration, not an inference.
+Reasoning base + transform + horizon + the demo A-Box introduces NO new class subsumption among
+base/transform classes. The demonstrator ingests real bills from the Congress.gov API (SPEED Act
+H.R. 3838; FY26 NDAA PL 119-60 sec. 1802 -> the Portfolio Acquisition Executive graduating POLICY ->
+STATUTE; FY27 H.R. 8800 / S. 4784). Reproduce with `python -m horizon.run_demo`; details in
+`horizon/README.md`. Three cross-family conformance reviews folded (design vet, output review, Red Team).
 
 ## Headline: the ICE (Information Content Entity) -> Objective shift
 

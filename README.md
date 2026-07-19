@@ -1,12 +1,14 @@
 # RockWorx Acquisition Ontology + SysML v2 Link
 
-A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle -- **and** a working,
-standards-based link that resolves SysML v2 system models into it. Published as two ontology
-modules plus a reproducible SysML v2 demonstrator. License: BSD-3-Clause. Creator: RockWorx
-Aerospace.
+A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle -- **plus** a legislative-horizon
+layer that models what Congress is about to change, **and** a working, standards-based link that
+resolves SysML v2 system models into it. Published as three ontology modules plus two reproducible
+demonstrators. License: BSD-3-Clause. Creator: RockWorx Aerospace.
 
-- **Base:** `https://w3id.org/rockworx/acq` (`rwx-acq-base.ttl`)
-- **Transform:** `https://w3id.org/rockworx/acq/transform` (`rwx-acq-transform.ttl`)
+- **Base:** `https://w3id.org/rockworx/acq` (`rwx-acq-base.ttl`) -- what IS law/policy.
+- **Transform:** `https://w3id.org/rockworx/acq/transform` (`rwx-acq-transform.ttl`) -- the 2025 reform.
+- **Legislative horizon:** `https://w3id.org/rockworx/acq/horizon` (`rwx-acq-horizon.ttl`) -- what MIGHT
+  become law: pending bills as non-asserted candidate changes. Demonstrator + pipeline in `horizon/`.
 - **SysML v2 link + demonstrator:** `sysml_link/`
 
 ## Why this exists
@@ -68,6 +70,26 @@ pySHACL) from the committed artifacts; see `sysml_link/` and its reference write
 one small model -- not a finished platform. It rides the standard SysML v2 API (any conformant
 tool, no lock-in), uses native v2 metadata (no brittle vendor mapping), and lands on the
 DoD-directed BFO/CCO base.
+
+## Legislative-horizon layer (`horizon/`)
+
+Base + transform assert what IS law/policy. The horizon module (`rwx-acq-horizon`) adds a THIRD,
+prospective layer: what MIGHT become law. Pending U.S. defense-acquisition bills are modeled as
+**non-asserted candidate changes**, so a program's acquisition context can be read against not just
+today's rules but the rules Congress is poised to change.
+
+- **The credibility linchpin -- prospective != asserted, machine-proven.** OWL is monotonic and has no
+  modality, so the layer keeps prospective strictly out of the asserted model: candidate changes are
+  Descriptive ICEs `owl:disjointWith` the base roles; the affected construct is referenced by OWL 2
+  punning (no propagating semantics); maturity/likelihood/impact are annotation properties (a judgment
+  can never be entailed as a fact); graduation on enactment is a governed append-only migration, not an
+  inference. Reasoning base + transform + horizon + the demo A-Box yields **no new class subsumption**
+  among base/transform classes (verified in `horizon/qc/`).
+- **The demonstrator** ingests real bills from the Congress.gov API (POLL real status -> SHRED provisions
+  with an LLM, grounded in the text -> TAG maturity + a sourced likelihood judgment -> LOAD non-asserted).
+  It answers *"what is on the legislative horizon for Milestone B / the MCA spine, and how likely?"* and
+  shows the FY26 NDAA (PL 119-60) codification of the Portfolio Acquisition Executive **graduating** from
+  policy (EO 14265) to statute. Reproduce Python-only: `python -m horizon.run_demo`. See `horizon/README.md`.
 
 ## Provenance
 

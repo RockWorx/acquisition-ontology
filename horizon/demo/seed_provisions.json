@@ -1,0 +1,41 @@
+{
+  "_comment": "GROUNDED real legislative instruments + provisions the horizon pipeline ingests. Provision text is grounded in the cited real source; the SHRED step (LLM) maps each to ontology terms. Poll status is fetched live from Congress.gov. All data real as of 2026-07-19.",
+  "instruments": {
+    "hr3838_119": {"congress": 119, "type": "hr", "number": 3838, "cycle": "FY26",
+      "label": "H.R. 3838 (119th) -- SPEED Act / House FY26 NDAA vehicle", "sponsor": "Rep. Mike Rogers (HASC)"},
+    "s1071_119": {"congress": 119, "type": "s", "number": 1071, "cycle": "FY26",
+      "label": "S. 1071 (119th) -> Public Law 119-60 -- FY2026 NDAA (final vehicle)", "sponsor": "SASC"},
+    "hr8800_119": {"congress": 119, "type": "hr", "number": 8800, "cycle": "FY27",
+      "label": "H.R. 8800 (119th) -- House FY2027 NDAA", "sponsor": "Rep. Mike Rogers (HASC)"},
+    "s4784_119": {"congress": 119, "type": "s", "number": 4784, "cycle": "FY27",
+      "label": "S. 4784 (119th) -- Senate FY2027 NDAA", "sponsor": "Sen. Roger Wicker (SASC)"},
+    "hr_fy27defapprop": {"congress": 119, "type": null, "number": null, "cycle": "FY27",
+      "label": "House FY2027 Defense Appropriations Act (committee-approved 34-27, June 2026)",
+      "sponsor": "House Appropriations (Defense Subcommittee)", "maturity_override": "reported",
+      "note": "Bill number not yet assigned a floor vehicle; committee-approved. Polled by title."}
+  },
+  "provisions": [
+    {"id": "speed_sec303", "instrument": "hr3838_119", "section": "sec. 303",
+      "provision_text": "Raises the dollar thresholds that DEFINE a Major Defense Acquisition Program (RDT&E $115M to $275M; total $540M to $1.3B), changing which programs are designated MDAPs and therefore subject to the formal milestone-decision reviews and gates; also raises the TINA threshold ($2M to $10M) and establishes a new DoD-specific simplified acquisition threshold ($10M).",
+      "source": "Inside Government Contracts analysis of H.R. 3838 (the SPEED Act), July 2025",
+      "enacted_in_fy26": false},
+    {"id": "speed_sec402", "instrument": "hr3838_119", "section": "sec. 402",
+      "provision_text": "Expands prototype Other Transaction Authority by removing the requirement for nontraditional-contractor participation, cost-sharing, or senior-procurement-executive justification for prototype OTAs.",
+      "source": "Inside Government Contracts analysis of H.R. 3838 (the SPEED Act), July 2025",
+      "enacted_in_fy26": false},
+    {"id": "ndaa26_sec1802_pae", "instrument": "s1071_119", "section": "sec. 1802",
+      "provision_text": "Codifies the Portfolio Acquisition Executive as the senior acquisition official designated by the component acquisition executive to lead a portfolio of capabilities, with authority for plans, budgets, and execution of programs assigned to the portfolio; PAEs report to service acquisition executives and program managers report to PAEs.",
+      "source": "FY2026 NDAA (Public Law 119-60) sec. 1802, from the Senate FORGED Act framework per the Joint Explanatory Statement",
+      "enacted_in_fy26": true},
+    {"id": "ndaa27s_accountability", "instrument": "s4784_119", "section": "acquisition title",
+      "provision_text": "Creates accountability measures for implementing the FY2026 NDAA generational acquisition reform, including reporting requirements and travel restrictions on senior officials until prescribed reform objectives are met.",
+      "source": "SASC FY2027 NDAA (S. 4784) review, Defense Tech & Acquisition, 2026",
+      "enacted_in_fy26": false},
+    {"id": "defapprop27_funding", "instrument": "hr_fy27defapprop", "section": "FY27 defense appropriations",
+      "provision_text": "The House FY2027 Defense Appropriations Act sets FY2027 funding levels for Department of Defense procurement and RDT&E accounts -- the appropriations that fund program funding sources.",
+      "source": "House Appropriations Committee, FY2027 Defense Appropriations Act, approved 34-27, June 2026",
+      "enacted_in_fy26": false}
+  ],
+  "fulltext_note": "H.R. 8800 (House FY27 NDAA) Title VIII (Acquisition Policy) was ingested from the full bill text via Congress.gov: 46 acquisition sections were extracted (SEC. 801-8xx); the first 3 (incl. SEC. 801, Responsibilities and Authorities of Portfolio Acquisition Executives) are shredded into candidates for the demo. A full run shreds all extracted sections.",
+  "omnibus_cr_status": "No FY2027 omnibus or continuing resolution has been filed as of 2026-07-19 (FY2026 appropriations completed April 2026; FY2027 is mid-cycle). The poll's omnibus/CR filter is configured and returns none."
+}

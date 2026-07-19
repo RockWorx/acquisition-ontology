@@ -1,0 +1,60 @@
+{
+  "speed_sec303": {
+    "wouldAffect": [
+      "rwxa:AcquisitionGate",
+      "rwxa:FundingSource"
+    ],
+    "changeType": "MODIFY",
+    "impactAssessment": "Raising MDAP thresholds will reduce the number of programs subject to formal milestone decisions, while increasing TINA and simplified acquisition thresholds will expand the use of simplified contracting procedures."
+  },
+  "speed_sec402": {
+    "wouldAffect": [
+      "rwxa:FundingSource"
+    ],
+    "changeType": "MODIFY",
+    "impactAssessment": "The removal of participation, cost-sharing, and justification requirements will make prototype Other Transaction Authorities easier to utilize, potentially increasing their adoption for rapid prototyping."
+  },
+  "ndaa26_sec1802_pae": {
+    "wouldAffect": [
+      "rwxt:PortfolioAcquisitionExecutive"
+    ],
+    "changeType": "ADD",
+    "impactAssessment": "The provision formally establishes the Portfolio Acquisition Executive role, clarifying its authority over program plans, budgets, and execution, and defining its reporting structure within the acquisition hierarchy."
+  },
+  "ndaa27s_accountability": {
+    "wouldAffect": [
+      "rwxt:PortfolioAcquisitionExecutive",
+      "rwxt:PortfolioScorecard"
+    ],
+    "changeType": "ADD",
+    "impactAssessment": "If enacted, this provision would establish new mechanisms to ensure the implementation of the generational acquisition reform, holding senior officials accountable through reporting and other restrictions until reform objectives are achieved."
+  },
+  "defapprop27_funding": {
+    "wouldAffect": [
+      "rwxa:FundingSource"
+    ],
+    "changeType": "MODIFY",
+    "impactAssessment": "The enactment of this provision will directly determine the financial resources available for Department of Defense acquisition programs in fiscal year 2027."
+  },
+  "hr8800_119_sec801": {
+    "wouldAffect": [
+      "rwxt:PortfolioAcquisitionExecutive"
+    ],
+    "changeType": "ADD",
+    "impactAssessment": "If enacted, this provision would grant Portfolio Acquisition Executives new authorities to issue performance improvement notices to underperforming contractors, thereby enhancing their ability to manage contractor performance and accountability."
+  },
+  "hr8800_119_sec802": {
+    "wouldAffect": [
+      "rwxa:FundingSource"
+    ],
+    "changeType": "MODIFY",
+    "impactAssessment": "If enacted, this provision would restrict the use of the Lowest Price Technically Acceptable source selection process, encouraging the Department of Defense to prioritize value through cost and technical tradeoffs in most procurement decisions."
+  },
+  "hr8800_119_sec803": {
+    "wouldAffect": [
+      "rwxa:FundingSource"
+    ],
+    "changeType": "ADD",
+    "impactAssessment": "The provision restricts the types of contract clauses that can be used for commercial products and services, thereby standardizing and potentially simplifying the contracting pathways for these items."
+  }
+}

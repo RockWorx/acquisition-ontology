@@ -1,0 +1,128 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rwxa: <https://w3id.org/rockworx/acq#> .
+@prefix rwxh: <https://w3id.org/rockworx/acq/horizon#> .
+@prefix rwxt: <https://w3id.org/rockworx/acq/transform#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rwxh:cand_defapprop27_funding a rwxh:LegislativeCandidateChange ;
+    rdfs:label "FY27 defense appropriations -- House FY2027 Defense Appropriations Act (committee-approved 34-27, June 2026)" ;
+    dcterms:source "House Appropriations Committee, FY2027 Defense Appropriations Act, approved 34-27, June 2026" ;
+    prov:wasDerivedFrom rwxh:hr_fy27defapprop ;
+    rwxh:changeType "MODIFY" ;
+    rwxh:enactmentLikelihood "MEDIUM-HIGH" ;
+    rwxh:impactAssessment "The enactment of this provision will directly determine the financial resources available for Department of Defense acquisition programs in fiscal year 2027." ;
+    rwxh:legislativeMaturity "reported" ;
+    rwxh:likelihoodBasis "Committee-reported and carried on a must-pass annual vehicle (House FY2027 Defense Appropriations Act (committee-approved 34-27, June 2026)); Bill number not yet assigned a floor vehicle; committee-approved. Polled by title.. Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxa:FundingSource .
+
+rwxh:cand_hr8800_119_sec801 a rwxh:LegislativeCandidateChange ;
+    rdfs:label "sec. 801 -- H.R. 8800 (119th)" ;
+    dcterms:source "HR 8800 (119th) Title VIII full text via Congress.gov (Reported in House)" ;
+    prov:wasDerivedFrom rwxh:hr8800_119 ;
+    rwxh:changeType "ADD" ;
+    rwxh:enactmentLikelihood "MEDIUM-HIGH" ;
+    rwxh:impactAssessment "If enacted, this provision would grant Portfolio Acquisition Executives new authorities to issue performance improvement notices to underperforming contractors, thereby enhancing their ability to manage contractor performance and accountability." ;
+    rwxh:legislativeMaturity "reported" ;
+    rwxh:likelihoodBasis "Committee-reported and carried on a must-pass annual vehicle (H.R. 8800 (119th) -- House FY2027 NDAA); 2026-06-30 - Rules Committee Resolution H. Res. 1398 Reported to House. Rule provides for consideration of H.R. 8800, H.R. 8595, H.R. 8884 and H. Res. 1383. The resolution provides for consideration of H.R. 8800 and H.R. 8595 under a structured rule, and H.R. 8884 and H. Res. 1383 under a closed rule. The resolution provides for one hour of general debate on each measure and one motion to recommit on H.R. 8800, H.R. 8595, and H.R. 8884.. Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxt:PortfolioAcquisitionExecutive .
+
+rwxh:cand_hr8800_119_sec802 a rwxh:LegislativeCandidateChange ;
+    rdfs:label "sec. 802 -- H.R. 8800 (119th)" ;
+    dcterms:source "HR 8800 (119th) Title VIII full text via Congress.gov (Reported in House)" ;
+    prov:wasDerivedFrom rwxh:hr8800_119 ;
+    rwxh:changeType "MODIFY" ;
+    rwxh:enactmentLikelihood "MEDIUM-HIGH" ;
+    rwxh:impactAssessment "If enacted, this provision would restrict the use of the Lowest Price Technically Acceptable source selection process, encouraging the Department of Defense to prioritize value through cost and technical tradeoffs in most procurement decisions." ;
+    rwxh:legislativeMaturity "reported" ;
+    rwxh:likelihoodBasis "Committee-reported and carried on a must-pass annual vehicle (H.R. 8800 (119th) -- House FY2027 NDAA); 2026-06-30 - Rules Committee Resolution H. Res. 1398 Reported to House. Rule provides for consideration of H.R. 8800, H.R. 8595, H.R. 8884 and H. Res. 1383. The resolution provides for consideration of H.R. 8800 and H.R. 8595 under a structured rule, and H.R. 8884 and H. Res. 1383 under a closed rule. The resolution provides for one hour of general debate on each measure and one motion to recommit on H.R. 8800, H.R. 8595, and H.R. 8884.. Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxa:FundingSource .
+
+rwxh:cand_hr8800_119_sec803 a rwxh:LegislativeCandidateChange ;
+    rdfs:label "sec. 803 -- H.R. 8800 (119th)" ;
+    dcterms:source "HR 8800 (119th) Title VIII full text via Congress.gov (Reported in House)" ;
+    prov:wasDerivedFrom rwxh:hr8800_119 ;
+    rwxh:changeType "ADD" ;
+    rwxh:enactmentLikelihood "MEDIUM-HIGH" ;
+    rwxh:impactAssessment "The provision restricts the types of contract clauses that can be used for commercial products and services, thereby standardizing and potentially simplifying the contracting pathways for these items." ;
+    rwxh:legislativeMaturity "reported" ;
+    rwxh:likelihoodBasis "Committee-reported and carried on a must-pass annual vehicle (H.R. 8800 (119th) -- House FY2027 NDAA); 2026-06-30 - Rules Committee Resolution H. Res. 1398 Reported to House. Rule provides for consideration of H.R. 8800, H.R. 8595, H.R. 8884 and H. Res. 1383. The resolution provides for consideration of H.R. 8800 and H.R. 8595 under a structured rule, and H.R. 8884 and H. Res. 1383 under a closed rule. The resolution provides for one hour of general debate on each measure and one motion to recommit on H.R. 8800, H.R. 8595, and H.R. 8884.. Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxa:FundingSource .
+
+rwxh:cand_ndaa26_sec1802_pae a rwxh:LegislativeCandidateChange ;
+    rdfs:label "sec. 1802 -- S. 1071 (119th) -> Public Law 119-60" ;
+    dcterms:source "FY2026 NDAA (Public Law 119-60) sec. 1802, from the Senate FORGED Act framework per the Joint Explanatory Statement" ;
+    owl:deprecated true ;
+    prov:wasDerivedFrom rwxh:s1071_119 ;
+    rwxh:changeType "ADD" ;
+    rwxh:enactmentLikelihood "N/A" ;
+    rwxh:graduatedTo rwxt:PortfolioAcquisitionExecutive ;
+    rwxh:impactAssessment "The provision formally establishes the Portfolio Acquisition Executive role, clarifying its authority over program plans, budgets, and execution, and defining its reporting structure within the acquisition hierarchy." ;
+    rwxh:legislativeMaturity "enacted" ;
+    rwxh:likelihoodBasis "Enacted -- no longer prospective; graduates into the asserted transform/base layer." ;
+    rwxh:wouldAffect rwxt:PortfolioAcquisitionExecutive .
+
+rwxh:cand_ndaa27s_accountability a rwxh:LegislativeCandidateChange ;
+    rdfs:label "acquisition title -- S. 4784 (119th)" ;
+    dcterms:source "SASC FY2027 NDAA (S. 4784) review, Defense Tech & Acquisition, 2026" ;
+    prov:wasDerivedFrom rwxh:s4784_119 ;
+    rwxh:changeType "ADD" ;
+    rwxh:enactmentLikelihood "MEDIUM-HIGH" ;
+    rwxh:impactAssessment "If enacted, this provision would establish new mechanisms to ensure the implementation of the generational acquisition reform, holding senior officials accountable through reporting and other restrictions until reform objectives are achieved." ;
+    rwxh:legislativeMaturity "reported" ;
+    rwxh:likelihoodBasis "Committee-reported and carried on a must-pass annual vehicle (S. 4784 (119th) -- Senate FY2027 NDAA); 2026-07-14 - Motion to proceed to consideration of measure made in Senate. (CR S3919). Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxt:PortfolioAcquisitionExecutive,
+        rwxt:PortfolioScorecard .
+
+rwxh:cand_speed_sec303 a rwxh:LegislativeCandidateChange ;
+    rdfs:label "sec. 303 -- H.R. 3838 (119th)" ;
+    dcterms:source "Inside Government Contracts analysis of H.R. 3838 (the SPEED Act), July 2025" ;
+    prov:wasDerivedFrom rwxh:hr3838_119 ;
+    rwxh:changeType "MODIFY" ;
+    rwxh:enactmentLikelihood "MEDIUM" ;
+    rwxh:impactAssessment "Raising MDAP thresholds will reduce the number of programs subject to formal milestone decisions, while increasing TINA and simplified acquisition thresholds will expand the use of simplified contracting procedures." ;
+    rwxh:legislativeMaturity "passed-one-chamber" ;
+    rwxh:likelihoodBasis "Passed one chamber (2025-09-30 - Received in the Senate.) but was not incorporated into the enacted FY2026 NDAA (PL 119-60); it may return in the FY2027 cycle. Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxa:AcquisitionGate,
+        rwxa:FundingSource .
+
+rwxh:cand_speed_sec402 a rwxh:LegislativeCandidateChange ;
+    rdfs:label "sec. 402 -- H.R. 3838 (119th)" ;
+    dcterms:source "Inside Government Contracts analysis of H.R. 3838 (the SPEED Act), July 2025" ;
+    prov:wasDerivedFrom rwxh:hr3838_119 ;
+    rwxh:changeType "MODIFY" ;
+    rwxh:enactmentLikelihood "MEDIUM" ;
+    rwxh:impactAssessment "The removal of participation, cost-sharing, and justification requirements will make prototype Other Transaction Authorities easier to utilize, potentially increasing their adoption for rapid prototyping." ;
+    rwxh:legislativeMaturity "passed-one-chamber" ;
+    rwxh:likelihoodBasis "Passed one chamber (2025-09-30 - Received in the Senate.) but was not incorporated into the enacted FY2026 NDAA (PL 119-60); it may return in the FY2027 cycle. Judgment, not a fact." ;
+    rwxh:prospectiveAuthorityTier "STATUTE-PENDING" ;
+    rwxh:wouldAffect rwxa:FundingSource .
+
+rwxh:hr_fy27defapprop a rwxh:LegislativeInstrument ;
+    rdfs:label "House FY2027 Defense Appropriations Act (committee-approved 34-27, June 2026)" ;
+    rwxh:legislativeMaturity "reported" .
+
+rwxh:s1071_119 a rwxh:LegislativeInstrument ;
+    rdfs:label "S. 1071 (119th) -> Public Law 119-60 -- FY2026 NDAA (final vehicle)" ;
+    rwxh:legislativeMaturity "enacted" .
+
+rwxh:s4784_119 a rwxh:LegislativeInstrument ;
+    rdfs:label "S. 4784 (119th) -- Senate FY2027 NDAA" ;
+    rwxh:legislativeMaturity "reported" .
+
+rwxh:hr3838_119 a rwxh:LegislativeInstrument ;
+    rdfs:label "H.R. 3838 (119th) -- SPEED Act / House FY26 NDAA vehicle" ;
+    rwxh:legislativeMaturity "passed-one-chamber" .
+
+rwxh:hr8800_119 a rwxh:LegislativeInstrument ;
+    rdfs:label "H.R. 8800 (119th) -- House FY2027 NDAA" ;
+    rwxh:legislativeMaturity "reported" .
+

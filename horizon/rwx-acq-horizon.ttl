@@ -1,0 +1,114 @@
+# RockWorx Acquisition Ontology -- LEGISLATIVE-HORIZON overlay (rwx-acq-horizon)
+# The THIRD, prospective/anticipatory layer above base (what IS law) + transform (the 2025 reform).
+# Models what MIGHT become law as NON-ASSERTED candidate changes, extracted from real congressional
+# instruments. EPISTEMIC DISCIPLINE: prospective != asserted -- see LegislativeCandidateChange.
+# Modal mechanism cross-family-vetted (the RockWorxDuo review protocol, verdict ADOPT, 2026-07-19); descriptive
+# fields are ANNOTATION properties (outside the OWL-DL logical model -> reasoner-invisible -> a
+# likelihood/impact judgment can never be entailed as a fact).
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rwxa: <https://w3id.org/rockworx/acq#> .
+@prefix rwxt: <https://w3id.org/rockworx/acq/transform#> .
+@prefix rwxh: <https://w3id.org/rockworx/acq/horizon#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#  Classes
+#################################################################
+
+rwxh:LegislativeInstrument a owl:Class ;
+    rdfs:label "Legislative Instrument" ;
+    obo:IAO_0000115 "A document content entity that is a bill, amendment, committee report, or enacted public law before or passed by the United States Congress (e.g. H.R. 3838, S. 4784, Public Law 119-60). Its existence is a matter of public record; asserting it asserts only that the document exists." ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/horizon> ;
+    rdfs:subClassOf cco:ont00002039 ;
+    skos:definition "A document content entity that is a bill, amendment, committee report, or enacted public law before or passed by the United States Congress." .
+
+rwxh:LegislativeCandidateChange a owl:Class ;
+    rdfs:label "Legislative Candidate Change" ;
+    obo:IAO_0000115 "A descriptive information content entity that DESCRIBES a proposed, not-yet-in-effect change to the defense acquisition system, extracted from a specific legislative instrument. EPISTEMIC DISCIPLINE: asserting an instance of this class asserts ONLY that the proposal exists and what it describes -- it does NOT assert that the described change is in effect. Prospective is not asserted." ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/horizon> ;
+    rdfs:subClassOf cco:ont00000853 ;
+    owl:disjointWith rwxh:LegislativeInstrument,
+        rwxa:AcquisitionGate,
+        rwxa:AcquisitionMilestone,
+        rwxa:AcquisitionPhase,
+        rwxa:FundingSource,
+        rwxa:ProgramOversightOrganization,
+        rwxa:RequirementDeterminationProcess,
+        rwxa:TechnicalReview ;
+    skos:definition "A descriptive information content entity describing a proposed, not-yet-in-effect change to the defense acquisition system, extracted from a specific legislative instrument; prospective, never asserted as in effect." .
+
+#################################################################
+#  Object properties
+#################################################################
+
+rwxh:wouldAffect a owl:ObjectProperty ;
+    rdfs:label "would affect" ;
+    obo:IAO_0000115 "Relates a legislative candidate change to the existing base or transform construct it would ADD to, MODIFY, or SUPERSEDE if the proposal were enacted. This is an INTENSIONAL reference for analysis only: it asserts NO change to the referenced construct. It is deliberately NOT a subproperty of any base relation and carries no range axiom, so a reasoner infers nothing about the referenced construct. The target construct is referenced by its class IRI via OWL 2 punning (a class name used as an individual)." ;
+    rdfs:domain rwxh:LegislativeCandidateChange ;
+    skos:definition "Relates a legislative candidate change to the base/transform construct it would add to, modify, or supersede if enacted; an intensional reference that asserts no change to the target." .
+
+prov:wasDerivedFrom a owl:ObjectProperty ;
+    rdfs:label "was derived from" ;
+    obo:IAO_0000115 "PROV-O: relates a legislative candidate change to the legislative instrument (bill, report, or public law) whose text it was extracted from." .
+
+#################################################################
+#  Annotation properties (descriptive metadata about the proposal;
+#  outside the OWL-DL logical model -> reasoner-invisible -> a judgment can never be entailed as fact)
+#################################################################
+
+rwxh:legislativeMaturity a owl:AnnotationProperty ;
+    rdfs:label "legislative maturity" ;
+    obo:IAO_0000115 "The rung a legislative candidate change occupies on the legislative-maturity ladder, taken from the Congress.gov API's real status: one of proposed | introduced | reported | passed-one-chamber | in-conference | enacted. On 'enacted' the candidate graduates out of the horizon into transform/base with statutory provenance." ;
+    skos:definition "The legislative-maturity rung (proposed | introduced | reported | passed-one-chamber | in-conference | enacted), taken from the source's real status." .
+
+rwxh:changeType a owl:AnnotationProperty ;
+    rdfs:label "change type" ;
+    obo:IAO_0000115 "What the proposal would do to the referenced construct if enacted: ADD | MODIFY | SUPERSEDE." ;
+    skos:definition "What the proposal would do to the referenced construct if enacted: ADD | MODIFY | SUPERSEDE." .
+
+rwxh:enactmentLikelihood a owl:AnnotationProperty ;
+    rdfs:label "enactment likelihood" ;
+    obo:IAO_0000115 "An explicit, sourced JUDGMENT of the likelihood the proposal is enacted: LOW | MEDIUM | HIGH. This is a judgment, NEVER a fact; it is an annotation and is invisible to the reasoner. It must always be paired with a likelihoodBasis." ;
+    skos:definition "An explicit, sourced judgment (LOW | MEDIUM | HIGH) of the likelihood of enactment; a judgment, never a fact." .
+
+rwxh:likelihoodBasis a owl:AnnotationProperty ;
+    rdfs:label "likelihood basis" ;
+    obo:IAO_0000115 "The sourced rationale for an enactmentLikelihood judgment; a likelihood is never a bare value." ;
+    skos:definition "The sourced rationale for an enactmentLikelihood judgment." .
+
+rwxh:impactAssessment a owl:AnnotationProperty ;
+    rdfs:label "impact assessment" ;
+    obo:IAO_0000115 "The analytic narrative of the downstream effect the proposal would have on the acquisition process if enacted -- the product of the horizon layer." ;
+    skos:definition "The analytic narrative of the downstream effect the proposal would have if enacted." .
+
+rwxh:prospectiveAuthorityTier a owl:AnnotationProperty ;
+    rdfs:label "prospective authority tier" ;
+    obo:IAO_0000115 "The authority tier a legislative candidate change WOULD establish if enacted -- e.g. STATUTE-PENDING (a pending statute). This is a horizon-layer annotation about a proposal; it is distinct from the transform layer's rwxt:authorityTier, which records the ASSERTED authority basis of an in-effect construct. Keeping them separate preserves the prospective-vs-asserted boundary. On enactment the construct gains rwxt:authorityTier via the graduation migration, not this property." ;
+    skos:definition "The authority tier a legislative candidate change would establish if enacted (e.g. STATUTE-PENDING); distinct from the transform layer's asserted authorityTier." .
+
+rwxh:graduatedTo a owl:AnnotationProperty ;
+    rdfs:label "graduated to" ;
+    obo:IAO_0000115 "On enactment, points a (now owl:deprecated) legislative candidate change to the base/transform construct that received the enacted change through the governed, append-only graduation migration." ;
+    skos:definition "Points an enacted, graduated candidate change to the base/transform construct that received the change." .
+
+#################################################################
+#  Ontology header
+#################################################################
+
+<https://w3id.org/rockworx/acq/horizon> a owl:Ontology ;
+    rdfs:label "RockWorx Acquisition Legislative-Horizon Overlay" ;
+    dcterms:creator "RockWorx Aerospace" ;
+    dcterms:description "The legislative-horizon overlay: prospective, non-asserted candidate changes to the DoD acquisition system, extracted from real congressional instruments and tagged with legislative maturity, a sourced likelihood judgment, and an impact assessment. Strictly separated from the asserted base and transform modules -- prospective is never asserted as fact." ;
+    dcterms:license <https://opensource.org/licenses/BSD-3-Clause> ;
+    dcterms:title "RockWorx Acquisition Legislative-Horizon Overlay" ;
+    owl:imports <https://w3id.org/rockworx/acq>,
+        <https://w3id.org/rockworx/acq/transform> ;
+    owl:versionIRI <https://w3id.org/rockworx/acq/horizon/2026-07-19> ;
+    owl:versionInfo "2026-07-19" ;
+    skos:definition "The legislative-horizon overlay: prospective, non-asserted candidate changes to the DoD acquisition system, extracted from real congressional instruments; strictly separated from the asserted base and transform modules." .

@@ -1,0 +1,13 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rwxh: <https://w3id.org/rockworx/acq/horizon#> .
+@prefix rwxt: <https://w3id.org/rockworx/acq/transform#> .
+
+rwxt:PortfolioAcquisitionExecutive rdfs:comment "GRADUATION PROPOSAL (CCB to ratify): sec. 1802 of S. 1071 (119th) -> Public Law 119-60 -- FY2026 NDAA (final vehicle) codifies this construct in statute. Append STATUTE provenance; KEEP the existing POLICY (EO 14265) link. Source: FY2026 NDAA (Public Law 119-60) sec. 1802, from the Senate FORGED Act framework per the Joint Explanatory Statement." ;
+    prov:wasDerivedFrom rwxh:s1071_119_ndaa26_sec1802_pae ;
+    rwxt:authorityTier "STATUTE" .
+
+rwxh:s1071_119_ndaa26_sec1802_pae a rwxh:LegislativeInstrument ;
+    rdfs:label "sec. 1802 of S. 1071 (119th) -> Public Law 119-60 -- FY2026 NDAA (final vehicle)" ;
+    rwxh:legislativeMaturity "enacted" .
+

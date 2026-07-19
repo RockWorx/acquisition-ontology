@@ -1,0 +1,6 @@
+# QC shim (baseline): base + transform ONLY, no horizon. Reasoned separately so the invariant
+# check can prove the horizon layer adds NO new entailment about any base/transform term.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+<https://w3id.org/rockworx/horizon-qc/baseline> a owl:Ontology ;
+    owl:imports <https://w3id.org/rockworx/acq>,
+        <https://w3id.org/rockworx/acq/transform> .

@@ -1,0 +1,57 @@
+{
+  "hr3838_119": {
+    "label": "H.R. 3838 (119th) -- SPEED Act / House FY26 NDAA vehicle",
+    "congress": 119,
+    "type": "hr",
+    "number": 3838,
+    "cycle": "FY26",
+    "maturity": "passed-one-chamber",
+    "latest_action": "2025-09-30 - Received in the Senate.",
+    "laws": null
+  },
+  "s1071_119": {
+    "label": "S. 1071 (119th) -> Public Law 119-60 -- FY2026 NDAA (final vehicle)",
+    "congress": 119,
+    "type": "s",
+    "number": 1071,
+    "cycle": "FY26",
+    "maturity": "enacted",
+    "latest_action": "2025-12-18 - Became Public Law No: 119-60.",
+    "laws": [
+      {
+        "number": "119-60",
+        "type": "Public Law"
+      }
+    ]
+  },
+  "hr8800_119": {
+    "label": "H.R. 8800 (119th) -- House FY2027 NDAA",
+    "congress": 119,
+    "type": "hr",
+    "number": 8800,
+    "cycle": "FY27",
+    "maturity": "reported",
+    "latest_action": "2026-06-30 - Rules Committee Resolution H. Res. 1398 Reported to House. Rule provides for consideration of H.R. 8800, H.R. 8595, H.R. 8884 and H. Res. 1383. The resolution provides for consideration of H.R. 8800 and H.R. 8595 under a structured rule, and H.R. 8884 and H. Res. 1383 under a closed rule. The resolution provides for one hour of general debate on each measure and one motion to recommit on H.R. 8800, H.R. 8595, and H.R. 8884.",
+    "laws": null
+  },
+  "s4784_119": {
+    "label": "S. 4784 (119th) -- Senate FY2027 NDAA",
+    "congress": 119,
+    "type": "s",
+    "number": 4784,
+    "cycle": "FY27",
+    "maturity": "reported",
+    "latest_action": "2026-07-14 - Motion to proceed to consideration of measure made in Senate. (CR S3919)",
+    "laws": null
+  },
+  "hr_fy27defapprop": {
+    "label": "House FY2027 Defense Appropriations Act (committee-approved 34-27, June 2026)",
+    "congress": 119,
+    "type": null,
+    "number": null,
+    "cycle": "FY27",
+    "maturity": "reported",
+    "latest_action": "Bill number not yet assigned a floor vehicle; committee-approved. Polled by title.",
+    "laws": null
+  }
+}
