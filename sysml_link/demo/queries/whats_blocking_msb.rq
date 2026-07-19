@@ -1,0 +1,22 @@
+# "What is preventing a successful Milestone B decision?"
+# Walks the digital thread produced by tagging a SysML v2 model into the acquisition
+# ontology: gate <- (informs) review <- (assessedAt) KPP <- (verifies) verification
+# -> (indicatesRisk) program risk; with the KPP's Title 10 authority.
+PREFIX rwxacq: <https://w3id.org/rockworx/acq#>
+PREFIX rwxsysml: <https://w3id.org/rockworx/acq/sysml#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+#  Type + structure joins are REQUIRED (they define what "a blocking thread" IS);
+#  rdfs:label lookups are OPTIONAL so a missing label never silently drops a finding.
+SELECT ?gate ?kpp ?verification ?risk ?authority WHERE {
+  ?g  a rwxacq:AcquisitionGate .
+  ?r  rwxacq:informs ?g ; a rwxacq:TechnicalReview .
+  ?k  rwxsysml:assessedAt ?r ; a rwxacq:KeyPerformanceParameter .
+  ?v  rwxsysml:verifies ?k ; rwxsysml:indicatesRisk ?rk .
+  ?rk a rwxacq:ProgramRisk .
+  OPTIONAL { ?g  rdfs:label ?gate }
+  OPTIONAL { ?k  rdfs:label ?kpp }
+  OPTIONAL { ?v  rdfs:label ?verification }
+  OPTIONAL { ?rk rdfs:label ?risk }
+  OPTIONAL { ?k prov:wasDerivedFrom ?a . OPTIONAL { ?a rdfs:label ?authority } }
+}

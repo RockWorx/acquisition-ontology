@@ -1,0 +1,32 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rwxsysml: <https://w3id.org/rockworx/acq/sysml#> .
+
+#  Controlled-vocabulary enforcement for the string-valued link properties. The gate shape
+#  matches literal values exactly (e.g. "FAIL", "Accepted"), so an out-of-vocabulary typo
+#  ("fail", "open") would otherwise silently pass. These shapes make such a typo a reported
+#  VALIDATION VIOLATION rather than a silent false-negative. Each shape targets exactly the
+#  nodes that carry the property.
+
+[] a sh:NodeShape ;
+   sh:targetSubjectsOf rwxsysml:verificationResult ;
+   sh:property [ sh:path rwxsysml:verificationResult ;
+                 sh:in ( "PASS" "FAIL" ) ;
+                 sh:message "verificationResult must be one of: PASS, FAIL." ] .
+
+[] a sh:NodeShape ;
+   sh:targetSubjectsOf rwxsysml:riskDisposition ;
+   sh:property [ sh:path rwxsysml:riskDisposition ;
+                 sh:in ( "Open" "Accepted" ) ;
+                 sh:message "riskDisposition must be one of: Open, Accepted." ] .
+
+[] a sh:NodeShape ;
+   sh:targetSubjectsOf rwxsysml:riskSeverity ;
+   sh:property [ sh:path rwxsysml:riskSeverity ;
+                 sh:in ( "LOW" "MEDIUM" "HIGH" ) ;
+                 sh:message "riskSeverity must be one of: LOW, MEDIUM, HIGH." ] .
+
+[] a sh:NodeShape ;
+   sh:targetSubjectsOf rwxsysml:riskStatus ;
+   sh:property [ sh:path rwxsysml:riskStatus ;
+                 sh:in ( "Open" "Closed" "Accepted" ) ;
+                 sh:message "riskStatus must be one of: Open, Closed, Accepted." ] .

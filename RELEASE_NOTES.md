@@ -6,14 +6,14 @@ modules. License: BSD-3-Clause. Creator: RockWorx Aerospace.
 - Base:      https://w3id.org/rockworx/acq          (rwx-acq-base.ttl)
 - Transform: https://w3id.org/rockworx/acq/transform (rwx-acq-transform.ttl)
 
-## Headline: the ICE -> Objective shift
+## Headline: the ICE (Information Content Entity) -> Objective shift
 
 The single most important thing to understand before querying this ontology is that
 the post-2025 Defense Acquisition System reform (Executive Order 14265) did not just
 rename a document -- it changed the KIND of thing the requirements root IS.
 
-- **Legacy: the Initial Capabilities Document (ICD/ICE).** Under JCIDS, the ICD is a
-  **Prescriptive** information content entity (CCO `ont00000965`, Prescriptive ICE --
+- **Legacy: the Initial Capabilities Document (ICD).** Under JCIDS, the ICD is a
+  **Prescriptive** Information Content Entity (ICE) (CCO `ont00000965`, Prescriptive ICE --
   in CCO 2.1 this class was renamed from "Directive ICE"). A prescriptive artifact
   states, or heavily implies, a preferred materiel solution: it identifies a
   capability gap AND a preferred materiel approach.
@@ -76,7 +76,8 @@ Provenance and authority are captured explicitly rather than left implicit:
   being reorganized, `cco:has_output` the resulting PAEs) -- the reform is modeled as
   something that HAPPENED, not just asserted as a fact.
 - **PROV-O** (`prov:wasDerivedFrom`): every reformed class is derived from
-  `ExecutiveOrder14265` (Nov 2025), the directing instrument.
+  `ExecutiveOrder14265` ("Modernizing Defense Acquisitions and Spurring Innovation in the
+  Defense Industrial Base"), the directing instrument.
 - **`authorityTier`**: every reformed class carries an annotation of
   `"POLICY"` -- this ontology's STATUTE > POLICY > GUIDANCE authority scale, so a
   consumer can tell at a glance that a construct rests on EO/policy authority, not
@@ -116,8 +117,17 @@ RockWorx Aerospace.
   4 Nov 2021), Section 3 -- the base module's MCA spine (phases, milestone gates,
   technical reviews) is transcribed from this instruction, not invented.
 - **Grounded to the 2025 Defense Acquisition System reform**, directed by Executive
-  Order 14265 (Nov 2025) -- the transform module's reformed classes and their
-  `authorityTier`/PROV-O provenance trace to this instrument.
+  Order 14265, "Modernizing Defense Acquisitions and Spurring Innovation in the Defense
+  Industrial Base" (9 April 2025; implemented later in 2025 by the Secretary of War
+  memorandum transforming the DAS into the WAS) -- the transform module's reformed classes
+  and their `authorityTier`/PROV-O provenance trace to this instrument.
+  - *Department naming:* the statutory name is the **Department of Defense** (used by EO
+    14265). Executive Order 14347, "Restoring the United States Department of War"
+    (5 Sep 2025), authorizes **"Department of War" / "Secretary of War" as an additional
+    SECONDARY title** for public, ceremonial, and non-statutory contexts -- the statutory
+    name remains Department of Defense, so the two co-exist. This ontology quotes each
+    instrument in its own language (EO 14265 = the acquisition-reform directing instrument;
+    the later WAS memoranda use the secondary "Secretary of War" title).
 - **BFO/CCO conformance-reviewed.** Both modules went through a RockWorxOS authored
   BFO/CCO conformance pass as part of the RockWorxDuo review protocol before this
   publish-prep: a design-level cross-check (base module) and a second pass against
@@ -127,6 +137,57 @@ RockWorx Aerospace.
   machine-checked ROBOT/Widoco tooling QC run separately as part of this same
   publish-prep pass (see the publish-prep task record for verbatim tooling-QC
   results).
+
+## Conformance notes
+
+Both modules pass an OWL EL (ELK) consistency + satisfiability check under the imported
+CCO 2.1 + BFO 2020 + IAO ontologies: **consistent, zero unsatisfiable classes.**
+
+**Deliberate divergence from strict OBO obsolescence convention.** The four legacy
+classes -- `JCIDS`, `InitialCapabilitiesDocument`, `ProgramExecutiveOffice`,
+`ConfigurationSteeringBoard` -- are `owl:deprecated true` with an IAO "term replaced by"
+(`obo:IAO_0100001`) link to their reformed successor, but this ontology deliberately
+RETAINS their real logical axioms (their base-role `rdfs:subClassOf`; for the ICD, the
+`isRequirementsInputTo` restriction to JCIDS) rather than stripping them to bare
+deprecation metadata.
+
+Strict OBO obsolescence convention says a deprecated class should carry little more than
+`owl:deprecated true` and a replaced-by pointer -- ROBOT's `report` command flags a
+deprecated class that still carries `rdfs:subClassOf`/restriction axioms as a
+`deprecated_class_reference` ERROR (a real, expected finding here, not a bug: 6
+occurrences across the four legacy classes plus the ICD's requirement-input restriction
+blank node).
+
+We keep the axioms anyway, on purpose, because this ontology's job is to model a
+REFORM, and the legacy structure IS the content that makes that reform queryable.
+Stripping `InitialCapabilitiesDocument` down to metadata-only would erase the one fact
+that explains WHY the reform happened at the class level: the ICD was a **Prescriptive**
+information content entity (CCO `ont00000965`) while its successor, the
+`KeyOperationalProblem`, is an **Objective** (CCO `ont00000476`) -- see "Headline: the
+ICE -> Objective shift" above. A metadata-only stub could not carry that distinction, and
+a consumer doing cross-era requirements traceability (the whole point of
+`isRequirementsInputTo`) would lose the ability to query "what did legacy requirements
+artifacts actually feed" once the legacy class's own axioms were removed.
+
+This is a considered deviation, not an oversight, and it is scoped narrowly to the four
+legacy classes named above. Two ROBOT `report` findings follow from it, both expected:
+
+- **6 `deprecated_class_reference` errors** -- the four classes' retained
+  `rdfs:subClassOf` axioms plus the ICD's `isRequirementsInputTo` restriction blank node
+  (described above).
+- **4 `missing_obsolete_label` warnings** -- the four classes keep their real
+  human-readable labels (e.g. "Initial Capabilities Document") rather than the strict-OBO
+  `obsolete `-prefixed form. This is the same rationale: an `obsolete `-prefixed label
+  signals "do not use this term," but this ontology deliberately keeps these classes
+  *queryable* for cross-era requirements traceability -- they are superseded, not to be
+  ignored. The `obo:IAO_0100001` "term replaced by" pointer IS present on all four (that
+  check passes normally).
+
+A strict-OBO consumer that wants the convention followed can trivially filter
+`owl:deprecated true` classes out of any query -- the retained axioms and labels are
+additive information, not a correctness violation of OWL/BFO semantics (the reasoning
+check above confirms this: still consistent, zero unsatisfiable classes, with the axioms
+in place).
 
 ## Resolving these IRIs
 

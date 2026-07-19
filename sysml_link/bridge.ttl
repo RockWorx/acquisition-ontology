@@ -1,0 +1,103 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix cco: <https://www.commoncoreontologies.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rwxsysml: <https://w3id.org/rockworx/acq/sysml#> .
+@prefix rwxacq: <https://w3id.org/rockworx/acq#> .
+
+<https://w3id.org/rockworx/acq/sysml> a owl:Ontology ;
+    owl:versionIRI <https://w3id.org/rockworx/acq/sysml/0.1.0> ;
+    owl:imports <https://w3id.org/rockworx/acq> ;
+    dcterms:title "RockWorx Acquisition Ontology -- SysML v2 Link Bridge" ;
+    dcterms:creator "RockWorx Aerospace" ;
+    dcterms:license <https://opensource.org/licenses/BSD-3-Clause> ;
+    dcterms:description "Mode-B bridge object-properties linking SysML v2 model elements to the RockWorx acquisition-lifecycle ontology (base + transform). Instance-level tagging only; asserts NO SysML-metaclass-to-BFO alignment. Reuses base and PROV-O properties where they already carry the needed semantics (rwxacq:informs, prov:wasDerivedFrom) rather than minting duplicates." .
+
+#  grounded domains/ranges: cco:ont00000958 = Information Content Entity;
+#  obo:BFO_0000015 = process; obo:BFO_0000040 = material entity.
+
+rwxsysml:assessedAt a owl:ObjectProperty ;
+    rdfs:label "assessed at" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain cco:ont00000958 ;
+    rdfs:range rwxacq:TechnicalReview ;
+    obo:IAO_0000115 "Relates a requirement or key performance parameter to the technical review at which its satisfaction is assessed." ;
+    skos:definition "Relates a requirement or key performance parameter to the technical review at which its satisfaction is assessed." .
+
+rwxsysml:satisfies a owl:ObjectProperty ;
+    rdfs:label "satisfies" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain obo:BFO_0000040 ;
+    rdfs:range cco:ont00000958 ;
+    obo:IAO_0000115 "Relates a design element (a material entity) to the requirement or key performance parameter that it satisfies." ;
+    skos:definition "Relates a design element (a material entity) to the requirement or key performance parameter that it satisfies." .
+
+rwxsysml:verifies a owl:ObjectProperty ;
+    rdfs:label "verifies" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain obo:BFO_0000015 ;
+    rdfs:range cco:ont00000958 ;
+    obo:IAO_0000115 "Relates a verification activity (a process) to the requirement or key performance parameter whose satisfaction it establishes by evidence." ;
+    skos:definition "Relates a verification activity (a process) to the requirement or key performance parameter whose satisfaction it establishes by evidence." .
+
+rwxsysml:indicatesRisk a owl:ObjectProperty ;
+    rdfs:label "indicates risk" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain obo:BFO_0000015 ;
+    rdfs:range rwxacq:ProgramRisk ;
+    obo:IAO_0000115 "Relates a process, such as a failed verification, to the program risk (a disposition) whose presence it indicates. Deliberately NOT BFO 'realizes' (obo:BFO_0000055): a failed test EVIDENCES the risk disposition; it does not realize it -- the risk is realized by the later undesired programmatic process." ;
+    skos:definition "Relates a process, such as a failed verification, to the program risk whose presence it indicates (evidential, not BFO realization)." .
+
+#  --- datatype properties: the verification outcome and the DERIVED risk's attributes ---
+#  The program risk is not hand-asserted; it is DERIVED from a FAIL verificationResult by the
+#  risk-derivation rule (demo/queries/derive_risk.rq), which stamps riskSeverity + riskStatus.
+
+rwxsysml:verificationResult a owl:DatatypeProperty ;
+    rdfs:label "verification result" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain obo:BFO_0000015 ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> ;
+    obo:IAO_0000115 "The recorded outcome of a verification (e.g. PASS or FAIL); a FAIL is the explicit datum from which a program risk is derived." .
+
+rwxsysml:riskDisposition a owl:DatatypeProperty ;
+    rdfs:label "risk disposition" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain obo:BFO_0000015 ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> ;
+    obo:IAO_0000115 "The program's handling decision for the risk arising from a verification's outcome: Open (unmitigated -- blocks a milestone gate) or Accepted (formally accepted -- does not block, and the failed result is retained)." .
+
+#  Severity + status describe a program risk; per BFO/CCO they belong on the RISK ASSESSMENT
+#  (a Descriptive Information Content Entity that bears likelihood/consequence), NOT on the
+#  ProgramRisk disposition itself. `assessesRisk` links the assessment to the risk it describes.
+rwxsysml:assessesRisk a owl:ObjectProperty ;
+    rdfs:label "assesses risk" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain rwxacq:RiskAssessment ;
+    rdfs:range rwxacq:ProgramRisk ;
+    obo:IAO_0000115 "Relates a risk assessment (a descriptive information content entity) to the program risk (a disposition) it describes." .
+
+rwxsysml:riskSeverity a owl:DatatypeProperty ;
+    rdfs:label "risk severity" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain rwxacq:RiskAssessment ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> ;
+    obo:IAO_0000115 "The assessed severity a risk assessment records for the program risk it describes (LOW, MEDIUM, or HIGH)." .
+
+rwxsysml:riskStatus a owl:DatatypeProperty ;
+    rdfs:label "risk status" ;
+    rdfs:isDefinedBy <https://w3id.org/rockworx/acq/sysml> ;
+    rdfs:domain rwxacq:RiskAssessment ;
+    rdfs:range <http://www.w3.org/2001/XMLSchema#string> ;
+    obo:IAO_0000115 "The management status a risk assessment records (Open, Closed, or Accepted); only an Open assessment of a risk blocks a milestone gate." .
+
+#  Reused from PROV-O for requirement-to-authority tracing (NOT minted here): a
+#  requirement or KPP was derived from / traces to the statutory or policy authority
+#  that establishes it. Adopted in place of a bespoke tracesToAuthority property. Typed
+#  here so the tag-library generator emits a connection def for it.
+prov:wasDerivedFrom a owl:ObjectProperty ;
+    rdfs:label "was derived from" ;
+    obo:IAO_0000115 "PROV-O: the subject entity was derived from the object entity. Reused here (NOT minted) so that a requirement or KPP traces to the statutory or policy authority that establishes it; declared locally only so the tag-library generator emits its connection def." ;
+    rdfs:comment "Reused from PROV-O for requirement-to-authority tracing; not a RockWorx-minted property." .

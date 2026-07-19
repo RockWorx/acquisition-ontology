@@ -1,0 +1,22 @@
+# Risk-derivation rule (retires the "modeler asserted the risk" honesty flag).
+# A verification that FAILED and verifies a KPP DERIVES a program risk (HIGH, Open),
+# linked by indicatesRisk. The risk is minted deterministically from the verification,
+# so nothing is hand-asserted -- the risk exists BECAUSE the recorded result is FAIL.
+PREFIX rwxacq: <https://w3id.org/rockworx/acq#>
+PREFIX rwxsysml: <https://w3id.org/rockworx/acq/sysml#>
+CONSTRUCT {
+  ?ver  rwxsysml:indicatesRisk ?risk .
+  ?risk a rwxacq:ProgramRisk .
+  ?assessment a rwxacq:RiskAssessment ;
+              rwxsysml:assessesRisk ?risk ;
+              rwxsysml:riskSeverity "HIGH" ;
+              rwxsysml:riskStatus ?status .
+} WHERE {
+  ?ver rwxsysml:verifies ?kpp ;
+       rwxsysml:verificationResult "FAIL" .
+  ?kpp a rwxacq:KeyPerformanceParameter .
+  OPTIONAL { ?ver rwxsysml:riskDisposition ?d }
+  BIND(COALESCE(?d, "Open") AS ?status)
+  BIND(IRI(CONCAT(STR(?ver), "-risk")) AS ?risk)
+  BIND(IRI(CONCAT(STR(?ver), "-assessment")) AS ?assessment)
+}

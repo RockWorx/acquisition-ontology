@@ -1,0 +1,28 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rwxacq: <https://w3id.org/rockworx/acq#> .
+@prefix rwxsysml: <https://w3id.org/rockworx/acq/sysml#> .
+
+#  SELF-CONTAINED: an acquisition gate is NOT passable while a KPP assessed at a technical
+#  review that informs it has a FAILED verification whose risk is not formally Accepted.
+#  It keys on the recorded FAIL + riskDisposition DIRECTLY, so the shape is sound on the
+#  raw extracted model.ttl -- it does NOT depend on first running the risk-derivation rule
+#  (a failed KPP verification is a HIGH risk by construction). Two mitigations, neither of
+#  which deletes data: fix the design (result -> PASS) or accept the risk
+#  (riskDisposition -> Accepted; the failed result is retained). The separate
+#  derive_risk.rq still materializes the ProgramRisk (severity/status) for the query
+#  narrative; this shape does not require it.
+[] a sh:NodeShape ;
+   sh:targetClass rwxacq:AcquisitionGate ;
+   sh:sparql [
+     sh:message "Milestone gate is not passable: a KPP assessed at a technical review that informs this gate has a FAILED verification whose risk has not been formally accepted." ;
+     sh:prefixes [ sh:declare
+        [ sh:prefix "rwxacq" ; sh:namespace "https://w3id.org/rockworx/acq#" ] ,
+        [ sh:prefix "rwxsysml" ; sh:namespace "https://w3id.org/rockworx/acq/sysml#" ] ] ;
+     sh:select """
+        SELECT $this WHERE {
+          ?review rwxacq:informs $this .
+          ?kpp rwxsysml:assessedAt ?review ; a rwxacq:KeyPerformanceParameter .
+          ?ver rwxsysml:verifies ?kpp ; rwxsysml:verificationResult "FAIL" .
+          FILTER NOT EXISTS { ?ver rwxsysml:riskDisposition "Accepted" }
+        } """ ;
+   ] .

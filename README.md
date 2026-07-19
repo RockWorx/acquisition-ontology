@@ -1,143 +1,100 @@
-# SKEDS Acquisition Ontology -- Release Notes
+# RockWorx Acquisition Ontology + SysML v2 Link
 
-RockWorx Aerospace's DoD acquisition-lifecycle extension ontology, published in two
-modules. License: BSD-3-Clause. Creator: RockWorx Aerospace.
-
-- Base:      https://w3id.org/rockworx/acq          (rwx-acq-base.ttl)
-- Transform: https://w3id.org/rockworx/acq/transform (rwx-acq-transform.ttl)
-
-## Headline: the ICE -> Objective shift
-
-The single most important thing to understand before querying this ontology is that
-the post-2025 Defense Acquisition System reform (Executive Order 14265) did not just
-rename a document -- it changed the KIND of thing the requirements root IS.
-
-- **Legacy: the Initial Capabilities Document (ICD/ICE).** Under JCIDS, the ICD is a
-  **Prescriptive** information content entity (CCO `ont00000965`, Prescriptive ICE --
-  in CCO 2.1 this class was renamed from "Directive ICE"). A prescriptive artifact
-  states, or heavily implies, a preferred materiel solution: it identifies a
-  capability gap AND a preferred materiel approach.
-- **Reformed: the Key Operational Problem (KOP).** Under the Joint Force Requirements
-  Process (JFRP), the requirements root is an **Objective** (CCO `ont00000476`): a
-  prioritized joint-force operational problem, ranked by the re-oriented Joint
-  Requirements Oversight Council (JROC). An objective states the PROBLEM and
-  deliberately withholds the solution.
-
-`InitialCapabilitiesDocument` is marked `owl:deprecated true` and carries an IAO
-"term replaced by" (`obo:IAO_0100001`) edge to `KeyOperationalProblem` in the
-transform module -- but **term-replaced-by is not sameness of kind.** Prescriptive
-(solution-stating) and Objective (problem-stating) are different OWL/BFO classes with
-different parents; an ICD-shaped answer is not the same shape as a KOP-shaped answer.
-
-**Practical consequence: do not query legacy requirements input by class alone.** A
-query that asks only "give me every `InitialCapabilitiesDocument`" (or only every
-`KeyOperationalProblem`) silently returns just one side of the reform and will
-under-count anyone auditing requirements traceability across the transition. See
-"Querying across the reform" below for the pattern that avoids this trap.
-
-## The two modules
-
-### Base: `https://w3id.org/rockworx/acq`
-
-The durable, era-neutral layer. Grounds the DoDI 5000.85 (6 Aug 2020, Chg 1
-4 Nov 2021) Major Capability Acquisition (MCA) lifecycle to CCO/BFO: the five MCA
-phases (MSA/TMRR/EMD/P&D/O&S), the milestone gates (MDD, MS A/B/C) and technical
-reviews (PDR/CDR/etc.), funding sources, program-oversight organizations, and program
-risk/risk-assessment. It defines two BASE ROLES that stay stable across acquisition
-policy eras precisely so the transform module can subtype them without base-layer
-churn:
-
-- `RequirementDeterminationProcess` -- the planned process by which capability
-  requirements are determined (played by JCIDS pre-reform, by the JFRP post-reform).
-- `ProgramOversightOrganization` -- the organization holding acquisition oversight
-  authority (played by a Program Executive Office pre-reform, by a Portfolio
-  Acquisition Executive post-reform).
-
-It also defines the bridging object property used to query across eras:
-`isRequirementsInputTo` (domain: an information content entity; range: a
-`RequirementDeterminationProcess`).
-
-### Transform: `https://w3id.org/rockworx/acq/transform`
-
-The WAS/JFRP reform overlay. `owl:imports` the base module and fills its two base
-roles with concrete legacy and reformed classes:
-
-- **Reformed fillers:** Joint Force Requirements Process, Portfolio Acquisition
-  Executive, Joint Acceleration Reserve (the CAPE-maintained valley-of-death funding
-  reserve), Capability Trade Council, Portfolio Scorecard, Key Operational Problem.
-- **Legacy fillers:** JCIDS, Initial Capabilities Document, Program Executive Office,
-  Configuration Steering Board -- each `owl:deprecated true` with an
-  `obo:IAO_0100001` ("term replaced by") edge to its reformed successor.
-
-Provenance and authority are captured explicitly rather than left implicit:
-
-- **A reform `bfo:process` individual**, `DASReform2025`, with an explicit causal
-  chain (`cco:has_input` the directing instrument, `bfo:has_participant` the PEOs
-  being reorganized, `cco:has_output` the resulting PAEs) -- the reform is modeled as
-  something that HAPPENED, not just asserted as a fact.
-- **PROV-O** (`prov:wasDerivedFrom`): every reformed class is derived from
-  `ExecutiveOrder14265` (Nov 2025), the directing instrument.
-- **`authorityTier`**: every reformed class carries an annotation of
-  `"POLICY"` -- this ontology's STATUTE > POLICY > GUIDANCE authority scale, so a
-  consumer can tell at a glance that a construct rests on EO/policy authority, not
-  statute.
-
-## Querying across the reform
-
-Use `isRequirementsInputTo`, not the legacy/reformed class names directly, to ask
-"what feeds a requirement-determination process" without having to already know
-which era's vocabulary applies. See `bridge-queries.rq` in this directory for two
-runnable SPARQL patterns:
-
-1. A restriction-based query that returns every requirement-input class (legacy AND
-   reformed) uniformly, by asking the ontology which classes are asserted to feed
-   SOME requirement-determination process -- rather than asking "does the caller
-   already know both class names."
-2. A UNION query retrieving requirement artifacts across both the legacy Prescriptive
-   ICE class (`cco:ont00000965`) and the reformed Objective/KOP class
-   (`cco:ont00000476`) in one result set, tagged with which era each result came
-   from -- this is the pattern that avoids the "class-only query silently returns
-   just one side of the reform" trap called out above.
-
-## License
-
-BSD-3-Clause. See `LICENSE` in this directory. Copyright (c) 2026 RockWorx
+A BFO/CCO-conformant ontology of the U.S. DoD acquisition lifecycle -- **and** a working,
+standards-based link that resolves SysML v2 system models into it. Published as two ontology
+modules plus a reproducible SysML v2 demonstrator. License: BSD-3-Clause. Creator: RockWorx
 Aerospace.
 
-## Creator
+- **Base:** `https://w3id.org/rockworx/acq` (`rwx-acq-base.ttl`)
+- **Transform:** `https://w3id.org/rockworx/acq/transform` (`rwx-acq-transform.ttl`)
+- **SysML v2 link + demonstrator:** `sysml_link/`
 
-RockWorx Aerospace.
+## Why this exists
+
+The Department of Defense has directed **BFO + CCO** as its baseline for formal ontology and
+is moving to **SysML v2** for digital engineering -- yet no public ontology models the DoD
+**acquisition lifecycle** on that base, and nothing links a SysML v2 system model to
+acquisition-process semantics. This fills both gaps:
+
+- **The ontology** -- what the acquisition process *is*: the DoDI 5000.85 Major Capability
+  Acquisition lifecycle (phases, milestone gates, technical reviews, program risk, funding,
+  oversight) plus the 2025 Warfighting Acquisition System / Joint Force Requirements Process
+  reform, grounded to CCO 2.1 + BFO 2020.
+- **The link** -- so a program's *actual* SysML v2 model becomes queryable against phases,
+  gates, reviews, KPPs, program risk, and Title 10 authority.
+
+## The ontology headline: the ICE -> Objective shift
+
+The most important thing to understand before querying is that the post-2025 reform did not
+just rename a document -- it changed the KIND of thing the requirements root **is**. Under
+JCIDS the Initial Capabilities Document is a **Prescriptive** Information Content Entity (CCO
+`ont00000965`) -- it implies a materiel solution. Under the Joint Force Requirements Process
+the root is an **Objective** (CCO `ont00000476`) -- the Key Operational Problem, which states
+the problem and withholds the solution. These are different OWL/BFO classes; the transform
+module marks the legacy term `owl:deprecated` with an IAO "term replaced by" pointer, but
+**term-replaced-by is not sameness of kind.** Query across the reform with the role-stable
+`isRequirementsInputTo` property, not by class name (see `RELEASE_NOTES.md` and
+`bridge-queries.rq`). Full module detail, conformance notes, and provenance:
+[`RELEASE_NOTES.md`](RELEASE_NOTES.md).
+
+## SysML v2 integration (`sysml_link/`)
+
+SysML v2 gives a standard, ISO-track, vendor-neutral system model behind a standard API --
+but a model is only meaning-bearing if its elements resolve to shared, *directed* semantics.
+This link supplies exactly that, using SysML v2's **native** constructs:
+
+- The RockWorx acquisition classes are emitted as a native SysML v2 **tag library**
+  (`owl:Class -> metadata def`, `owl:ObjectProperty -> connection def`).
+- A model tags its elements with those classes and uses first-class SysML v2 constructs -- a
+  **`requirement`** (the KPP), **`satisfy`** (design satisfies requirement), and a
+  **`verification`** case that **`verify`s** the requirement with a **`VerdictKind`** result.
+- A transform reads the model's AST and resolves each tagged element and native relation into
+  the acquisition ontology as RDF. Acquisition-process relations that SysML v2 has **no**
+  native construct for (a requirement *assessed at* a review, a review that *informs* a gate,
+  a KPP that *traces to* Title 10 authority) are carried by a small bridge overlay. That
+  division -- native SysML v2 for the system model, the bridge for the acquisition process --
+  is the point.
+
+**The demonstrator ("Risk-Driven Milestone Validation").** A tiny SysML v2 model whose KPP
+verification records a **FAIL**. From that failure a program risk is **derived** (not
+hand-asserted), and a SHACL rule *enforces* the acquisition decision: a single SPARQL query
+answers *"what is preventing a successful Milestone B decision?"* end-to-end
+(KPP -> review -> gate + failed verification -> derived risk + Title 10 authority), and the
+Milestone B gate is **blocked** while the risk is open -- and **passes** once the design is
+fixed (result -> PASS) or the risk is formally accepted. Reproduce it Python-only (rdflib +
+pySHACL) from the committed artifacts; see `sysml_link/` and its reference write-up.
+
+**Warranted scope.** This is a *buildable, standards-based, DoD-directed* link demonstrated on
+one small model -- not a finished platform. It rides the standard SysML v2 API (any conformant
+tool, no lock-in), uses native v2 metadata (no brittle vendor mapping), and lands on the
+DoD-directed BFO/CCO base.
 
 ## Provenance
 
-- **Grounded to CCO 2.1** (Common Core Ontologies) + BFO 2020, via `owl:imports` in
-  both modules' headers.
-- **Grounded to DoDI 5000.85**, "Major Capability Acquisition" (6 Aug 2020, Chg 1
-  4 Nov 2021), Section 3 -- the base module's MCA spine (phases, milestone gates,
-  technical reviews) is transcribed from this instruction, not invented.
-- **Grounded to the 2025 Defense Acquisition System reform**, directed by Executive
-  Order 14265 (Nov 2025) -- the transform module's reformed classes and their
-  `authorityTier`/PROV-O provenance trace to this instrument.
-- **BFO/CCO conformance-reviewed.** Both modules went through a RockWorxOS authored
-  BFO/CCO conformance pass as part of the RockWorxDuo review protocol before this
-  publish-prep: a design-level cross-check (base module) and a second pass against
-  the actual serialized Turtle (transform module, output conformance: PASS, no red
-  flags, 2 HIGH-severity fixes applied). These are RockWorxOS reviews of ontology
-  conformance to BFO/CCO modeling conventions -- they are not a substitute for the
-  machine-checked ROBOT/Widoco tooling QC run separately as part of this same
-  publish-prep pass (see the publish-prep task record for verbatim tooling-QC
-  results).
+- **Grounded** to CCO 2.1 + BFO 2020 (via `owl:imports`), to DoDI 5000.85 for the MCA spine,
+  and to the 2025 reform's directing instrument, **Executive Order 14265, "Modernizing Defense
+  Acquisitions and Spurring Innovation in the Defense Industrial Base"** (9 April 2025).
+- **Conformance-reviewed.** Both modules and the SysML v2 link went through RockWorxOS-authored
+  BFO/CCO conformance passes under the RockWorxDuo review protocol -- design-level and
+  output-level cross-checks, plus an adversarial red-team pass at a public-release bar. These
+  are conformance *reviews*, distinct from the machine-checked tooling QC below.
+- **Machine-checked.** Both modules reason **ELK-consistent, zero unsatisfiable classes**, and
+  the demonstrator's instance graph reasons consistent against the full BFO/CCO + module stack
+  (`qc/`, fully offline-reproducible). ROBOT reports clean apart from a deliberate, documented
+  divergence around the retained deprecated-class axioms (see `RELEASE_NOTES.md`).
 
-## Resolving these IRIs
+*Note on department naming:* the statutory name is the **Department of Defense** (used by EO
+14265). Executive Order 14347 (5 Sep 2025) authorizes "Department of War" / "Secretary of War"
+as an additional **secondary** title for public and non-statutory contexts; the two co-exist.
+This ontology quotes each instrument in its own language.
 
-The base and transform ontology IRIs (`https://w3id.org/rockworx/acq` and
-`https://w3id.org/rockworx/acq/transform`) are **persistent identifiers under the
-w3id.org permanent-identifier service.** The redirect from `w3id.org/rockworx/*` to
-this ontology's actual hosting location is registered via a pull request to the
-`perma-id/w3id.org` GitHub repository, submitted at publication time.
+## License
 
-**Until that PR is merged, these IRIs are valid, stable identifiers that do not yet
-resolve over HTTP.** Use them as-is for class/property identity and for `owl:imports`
--- do not substitute a placeholder or a different host, and do not treat a failed
-HTTP GET against them (before the redirect is registered) as evidence the IRIs are
-wrong.
+BSD-3-Clause. See [`LICENSE`](LICENSE). Copyright (c) 2026 RockWorx Aerospace.
+
+## Resolving the IRIs
+
+`https://w3id.org/rockworx/acq*` are persistent identifiers under the w3id.org service; the
+redirect is registered by a pull request to `perma-id/w3id.org` at publication time. Until it
+merges the IRIs are valid, stable identifiers that do not yet resolve over HTTP -- use them
+as-is for class/property identity and `owl:imports`.

@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/rockworx/acq#"
+     xml:base="https://w3id.org/rockworx/acq"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:cco="https://www.commoncoreontologies.org/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rwxacq="https://w3id.org/rockworx/acq#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/rockworx/acq">
+        <owl:versionIRI rdf:resource="https://w3id.org/rockworx/acq/2026-07-18"/>
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bfo/2020/bfo.owl"/>
+        <owl:imports rdf:resource="https://www.commoncoreontologies.org/CommonCoreOntologiesMerged"/>
+        <dcterms:creator>RockWorx Aerospace</dcterms:creator>
+        <dcterms:description>The base RockWorx acquisition-lifecycle extension ontology, grounding DoD acquisition-lifecycle concepts to CCO/BFO.</dcterms:description>
+        <dcterms:license rdf:resource="https://opensource.org/licenses/BSD-3-Clause"/>
+        <dcterms:title>RockWorx Acquisition Ontology (Base)</dcterms:title>
+        <rdfs:label>RockWorx Acquisition Ontology (Base)</rdfs:label>
+        <owl:versionInfo>2026-07-18</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000115 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#demands -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#demands">
+        <obo:IAO_0000115>Relates an acquisition gate or technical review to a competency it demands be demonstrated for passage.</obo:IAO_0000115>
+        <rdfs:label>demands</rdfs:label>
+        <skos:definition>Relates an acquisition gate or technical review to a competency it demands be demonstrated for passage.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#demonstrates -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#demonstrates">
+        <obo:IAO_0000115>Relates an information artifact to a competency whose maturity it demonstrates (evidentially, carrying a date).</obo:IAO_0000115>
+        <rdfs:label>demonstrates</rdfs:label>
+        <skos:definition>Relates an information artifact to a competency whose maturity it demonstrates (evidentially, carrying a date).</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#gates -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#gates">
+        <obo:IAO_0000115>Relates an acquisition gate to the phase transition whose authorization it controls.</obo:IAO_0000115>
+        <rdfs:label>gates</rdfs:label>
+        <skos:definition>Relates an acquisition gate to the phase transition whose authorization it controls.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#governs -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#governs">
+        <obo:IAO_0000115>Relates a program-oversight organization to a program element under its acquisition oversight.</obo:IAO_0000115>
+        <rdfs:label>governs</rdfs:label>
+        <skos:definition>Relates a program-oversight organization to a program element under its acquisition oversight.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#informs -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#informs">
+        <rdfs:domain rdf:resource="https://w3id.org/rockworx/acq#TechnicalReview"/>
+        <rdfs:range rdf:resource="https://w3id.org/rockworx/acq#AcquisitionGate"/>
+        <obo:IAO_0000115>Relates a technical review to the acquisition gate decision it informs (a review informs, but does not constitute, a gate).</obo:IAO_0000115>
+        <rdfs:label>informs</rdfs:label>
+        <skos:definition>Relates a technical review to the acquisition gate decision it informs (a review informs, but does not constitute, a gate).</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#isRequirementsInputTo -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#isRequirementsInputTo">
+        <rdfs:domain rdf:resource="https://www.commoncoreontologies.org/ont00000958"/>
+        <rdfs:range rdf:resource="https://w3id.org/rockworx/acq#RequirementDeterminationProcess"/>
+        <obo:IAO_0000115>Relates an information artifact (a capability requirement document or an operational problem statement) to the requirement-determination process it feeds.</obo:IAO_0000115>
+        <rdfs:label>is requirements input to</rdfs:label>
+        <skos:definition>Relates an information artifact (a capability requirement document or an operational problem statement) to the requirement-determination process it feeds.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#owns -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#owns">
+        <obo:IAO_0000115>Relates an agent or role to the acquisition act (gate or review) for which it holds decision ownership.</obo:IAO_0000115>
+        <rdfs:label>owns</rdfs:label>
+        <skos:definition>Relates an agent or role to the acquisition act (gate or review) for which it holds decision ownership.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#performs -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#performs">
+        <obo:IAO_0000115>Relates an agent to an acquisition activity it performs.</obo:IAO_0000115>
+        <rdfs:label>performs</rdfs:label>
+        <skos:definition>Relates an agent to an acquisition activity it performs.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#precedes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#precedes">
+        <obo:IAO_0000115>Relates an acquisition phase to the phase that immediately follows it in the lifecycle.</obo:IAO_0000115>
+        <rdfs:label>precedes</rdfs:label>
+        <skos:definition>Relates an acquisition phase to the phase that immediately follows it in the lifecycle.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#producesArtifact -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#producesArtifact">
+        <obo:IAO_0000115>Relates an acquisition activity to an information artifact it produces.</obo:IAO_0000115>
+        <rdfs:label>produces artifact</rdfs:label>
+        <skos:definition>Relates an acquisition activity to an information artifact it produces.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#requiresArtifact -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#requiresArtifact">
+        <obo:IAO_0000115>Relates an acquisition gate or technical review to an information artifact it requires as entry or exit criteria.</obo:IAO_0000115>
+        <rdfs:label>requires artifact</rdfs:label>
+        <skos:definition>Relates an acquisition gate or technical review to an information artifact it requires as entry or exit criteria.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#supersedes -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/rockworx/acq#supersedes">
+        <obo:IAO_0000115>Relates a construct to a prior construct it supersedes (e.g. a reformed process superseding a legacy one).</obo:IAO_0000115>
+        <rdfs:label>supersedes</rdfs:label>
+        <skos:definition>Relates a construct to a prior construct it supersedes (e.g. a reformed process superseding a legacy one).</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#AcquisitionGate -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#AcquisitionGate">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000228"/>
+        <owl:disjointWith rdf:resource="https://w3id.org/rockworx/acq#TechnicalReview"/>
+        <obo:IAO_0000115>A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum).</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Acquisition Gate</rdfs:label>
+        <skos:definition>A planned decision act by which a Milestone Decision Authority authorizes passage from one acquisition phase to the next (e.g. a Milestone A/B/C decision or an MRL gate); it creates a prescriptive information content entity (an acquisition decision memorandum).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#AcquisitionMilestone -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#AcquisitionMilestone">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000035"/>
+        <obo:IAO_0000115>A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C).</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Acquisition Milestone</rdfs:label>
+        <skos:definition>A process boundary marking a decision point in the acquisition lifecycle (Milestone A, B, or C).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#AcquisitionPhase -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#AcquisitionPhase">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <obo:IAO_0000115>A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&amp;D, O&amp;S); it occupies a one-dimensional temporal region.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Acquisition Phase</rdfs:label>
+        <skos:definition>A process during which a defined set of DoD acquisition activities occurs (e.g. MSA, TMRR, EMD, P&amp;D, O&amp;S); it occupies a one-dimensional temporal region.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#AuthorityReference -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#AuthorityReference">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00002039"/>
+        <obo:IAO_0000115>A document content entity that establishes statutory or policy authority (e.g. a Title 10 U.S.C. section, a DoD instruction) to which a capability requirement or key performance parameter traces.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Authority Reference</rdfs:label>
+        <skos:definition>A document content entity that establishes statutory or policy authority (e.g. a Title 10 U.S.C. section, a DoD instruction) to which a capability requirement or key performance parameter traces.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#FundingSource -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#FundingSource">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000958"/>
+        <obo:IAO_0000115>An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Funding Source</rdfs:label>
+        <skos:definition>An information content entity representing a source of program funding, such as a Joint Acceleration Reserve allocation or a PPBE program element.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#KeyPerformanceParameter -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#KeyPerformanceParameter">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000127"/>
+        <obo:IAO_0000115>A performance specification stating a minimum acceptable value of a system attribute that must be met to deliver the required operational capability (a KPP); a subtype of Performance Specification that persists across the JCIDS-to-JFRP reform (KPP/KSA/APA).</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Key Performance Parameter</rdfs:label>
+        <skos:definition>A performance specification stating a minimum acceptable value of a system attribute that must be met to deliver the required operational capability (a KPP); a subtype of Performance Specification that persists across the JCIDS-to-JFRP reform (KPP/KSA/APA).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#ProgramOversightOrganization -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#ProgramOversightOrganization">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00001180"/>
+        <obo:IAO_0000115>An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office).</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Program Oversight Organization</rdfs:label>
+        <skos:definition>An organization that oversees defense acquisition programs (e.g. a Program Executive Office or a Portfolio Acquisition Executive office).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#ProgramRisk -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#ProgramRisk">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000016"/>
+        <obo:IAO_0000115>A disposition of a program to realize an undesired outcome; it is realized in an undesired programmatic process.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Program Risk</rdfs:label>
+        <skos:definition>A disposition of a program to realize an undesired outcome; it is realized in an undesired programmatic process.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#RequirementDeterminationProcess -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#RequirementDeterminationProcess">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000228"/>
+        <obo:IAO_0000115>A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process).</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Requirement Determination Process</rdfs:label>
+        <skos:definition>A planned process by which defense acquisition capability requirements are determined (e.g. the legacy JCIDS or the reformed Joint Force Requirements Process).</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#RiskAssessment -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#RiskAssessment">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000853"/>
+        <obo:IAO_0000115>A descriptive information content entity that describes a program risk and bears likelihood and consequence qualities.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Risk Assessment</rdfs:label>
+        <skos:definition>A descriptive information content entity that describes a program risk and bears likelihood and consequence qualities.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#TechnicalReview -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#TechnicalReview">
+        <rdfs:subClassOf rdf:resource="https://www.commoncoreontologies.org/ont00000228"/>
+        <obo:IAO_0000115>A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Technical Review</rdfs:label>
+        <skos:definition>A planned act by which the technical state of a program is assessed against defined entry and exit criteria (e.g. SRR, PDR, CDR, TRR); it creates a descriptive information content entity (the review findings) and informs an acquisition gate.</skos:definition>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/rockworx/acq#UndesiredProgrammaticProcess -->
+
+    <owl:Class rdf:about="https://w3id.org/rockworx/acq#UndesiredProgrammaticProcess">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+        <obo:IAO_0000115>A programmatic process constituting an undesired outcome that a program risk is realized in.</obo:IAO_0000115>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/rockworx/acq"/>
+        <rdfs:label>Undesired Programmatic Process</rdfs:label>
+        <skos:definition>A programmatic process constituting an undesired outcome that a program risk is realized in.</skos:definition>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+

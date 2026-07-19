@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Offline import catalog: maps every external + self import to a local copy under
+     imports/ (populated by setup-offline-imports.sh) so ROBOT reasoning is fully
+     network-free and reproducible. Relative paths resolve from this file location. -->
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="http://purl.obolibrary.org/obo/bfo/2020/bfo.owl" uri="imports/bfo.ttl"/>
+  <uri name="https://www.commoncoreontologies.org/CommonCoreOntologiesMerged" uri="imports/cco.ttl"/>
+  <uri name="http://purl.obolibrary.org/obo/iao.owl" uri="imports/iao.owl"/>
+  <uri name="https://w3id.org/rockworx/acq" uri="../rwx-acq-base.ttl"/>
+  <uri name="https://w3id.org/rockworx/acq/transform" uri="../rwx-acq-transform.ttl"/>
+  <uri name="https://w3id.org/rockworx/acq/sysml" uri="../sysml_link/bridge.ttl"/>
+</catalog>
