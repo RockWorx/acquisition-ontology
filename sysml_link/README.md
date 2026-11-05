@@ -17,7 +17,7 @@ contexts; a BSD-3 tool established the tagging pattern). It is not a finished pl
 We tag SPECIFIC SysML v2 model elements with acquisition classes (native `@metadata`, no
 UML profile), then resolve those instances into the ontology. We deliberately do NOT assert
 SysML-metaclass -> BFO subclass axioms (an M-level category error, and the first thing a
-hostile ontologist would attack). A thin bridge (`rwx/skeds/sysml_link/bridge.ttl`) adds the
+hostile ontologist would attack). A thin bridge (`sysml_link/bridge.ttl`) adds the
 few object/datatype properties the link needs and REUSES existing properties where they
 already fit (`rwxacq:informs`, `prov:wasDerivedFrom`) rather than minting duplicates.
 
@@ -60,13 +60,13 @@ result is FAIL. Both mitigations preserve the audit trail (neither deletes data)
 ## Reproduce it
 
 - **Python-only (no Java):** the extracted `model.ttl` + rules + shapes are committed, so:
-  `wsl ... ~/.venvs/f16union/bin/python -m rwx.skeds.sysml_link.run_demo`
-  (rdflib + pySHACL; prints the query result and the three gate states). Tests:
-  `pytest tests/skeds/test_sysml_taglib.py test_sysml_bridge.py test_sysml_transform.py test_sysml_payoff.py`.
+  `python sysml_link/run_demo.py` from the release root
+  (rdflib + pySHACL; prints the query result and the three gate states). The maintainers'
+  pytest suite runs in their source tree and is not part of this release.
 - **From SysML source (needs the toolchain):** regenerate the AST per `TOOLCHAIN.md`
   (Temurin 21 + pilot 0.60.1 fat jar, headless), then `transform.transform(...)`.
 - **Vendored OMG @context** (for the optional JSON-LD/`gen_jsonld` standards export) are
-  fetchable per `rwx/skeds/sysml_link/vendor/VENDOR.md`; the canonical transform does not
+  fetchable per `sysml_link/vendor/VENDOR.md`; the canonical transform does not
   need them.
 
 ## Reuse credited

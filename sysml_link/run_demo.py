@@ -13,7 +13,7 @@ rule AND responds to the program's state:
   2. fix the design (result->PASS)   -> no failed verification              -> gate PASSES;
   3. accept the risk (disp->Accepted)-> failed test retained but accepted   -> gate PASSES.
 
-Run:  wsl ... ~/.venvs/f16union/bin/python -m rwx.skeds.sysml_link.run_demo
+Run:  python sysml_link/run_demo.py        (from the release root; needs rdflib + pySHACL)
 """
 
 import os
